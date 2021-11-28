@@ -1,0 +1,27 @@
+
+Master Initializing Resource Descriptor Table at 0 seconds : 55nanoseconds
+Master Initializing Resource Descriptor Table at 0 seconds : 55nanosecondsR0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+52	63	68	15	12	42	72	63	72	75	72	8	52	75	24	17	12	81	10	63
+Master completed Resource Descriptor Initialization at 2 : 85
+Master Initializing Resource Descriptor Table at 0 seconds : 55nanoseconds
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+7	3	27	1	63	2	45	15	15	69	57	12	47	27	39	67	27	51	15	75
+Master completed Resource Descriptor Initialization at 2 : 85
+
+Master Initializing Resource Descriptor Table at 0 seconds : 55 nanoseconds
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+17	64	51	24	13	42	45	67	85	23	37	70	53	7	53	82	37	11	11	64
+
+Master completed Resource Descriptor Initialization at 2 : 85
+
+Master Initializing Resource Descriptor Table at 0:55
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+39	16	35	62	31	54	55	79	31	70	79	61	71	67	31	84	7	43	5	70
+
+Master completed Resource Descriptor Initialization at 2:85
