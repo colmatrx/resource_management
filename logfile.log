@@ -25,3 +25,221 @@ R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
 39	16	35	62	31	54	55	79	31	70	79	61	71	67	31	84	7	43	5	70
 
 Master completed Resource Descriptor Initialization at 2:85
+
+Master Initializing Resource Descriptor Table at 0:55
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+54	47	66	48	2	9	34	29	30	66	74	87	58	44	34	44	38	21	44	47
+
+Master completed Resource Descriptor Initialization at 2:85
+OSS: Resource Descriptor Table's Shared Memory ID 55 has been detached and deleted at  3:100.
+OSS: OSS Clock Shared Memory ID 32782 has been detached and deleted at 4:100
+
+Master Initializing Resource Descriptor Table at 0:55
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+49	80	17	35	77	79	89	8	85	17	89	17	69	26	21	49	17	43	81	62
+
+Master completed Resource Descriptor Initialization at 2:85
+OSS: Resource Descriptor Table's Shared Memory ID 32816 has been detached and deleted at  3:100
+OSS: OSS Clock Shared Memory ID 32815 has been detached and deleted at 4:125
+
+Master Initializing Resource Descriptor Table at 0:55
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+61	18	25	6	21	76	39	27	33	32	81	57	29	84	79	6	81	80	35	72
+
+Master completed Resource Descriptor Initialization at 2:85
+OSS: Resource Descriptor Table's Shared Memory ID 32818 has been detached and deleted at  3:100
+
+OSS: OSS Clock Shared Memory ID 32817 has been detached and deleted at 4:125
+
+
+Master Initializing Resource Descriptor Table at 0:55
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+76	18	38	35	84	66	74	51	4	24	36	12	84	42	72	1	24	55	28	18
+
+Master completed Resource Descriptor Initialization at 2:85
+Master Resource Descriptor Table's Shared Memory ID 30 has been detached and deleted at  3:100
+
+Master Clock Shared Memory ID 27 has been detached and deleted at 4:125
+
+
+Master Initializing Resource Descriptor Table at 0:55
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+14	4	20	59	22	14	62	37	42	48	4	30	70	4	12	64	34	57	42	31
+
+Master completed Resource Descriptor Initialization at 2:85
+
+Master Resource Descriptor Table's Shared Memory ID 32 has been detached and deleted at  3:100
+
+Master Clock Shared Memory ID 31 has been detached and deleted at 4:125
+
+
+Master Initializing Resource Descriptor Table at 0:55
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+7	82	13	51	91	72	71	19	79	90	37	46	27	37	17	57	55	64	41	19
+
+Master completed Resource Descriptor Initialization at 2:85
+
+Master Resource Descriptor Table's Shared Memory ID 44 has been detached and deleted at  3:100
+
+Master Clock Shared Memory ID 41 has been detached and deleted at 4:125
+
+Master terminating at time 5:140
+
+
+Master Initializing Resource Descriptor Table at 0:55
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+23	28	49	55	55	28	47	25	31	42	73	34	39	1	31	48	7	32	51	28
+
+Master completed Resource Descriptor Initialization at 2:85
+Master in Signal Handler; Ctrl+C interrupt received at 2:85
+
+Master cleaning up resources at 2:90
+
+
+Master Resource Descriptor Table's Shared Memory ID 32819 has been detached and deleted at  3:105
+
+Master Clock Shared Memory ID 32818 has been detached and deleted at 4:130
+
+Master terminating at time 5:145
+
+
+Master Initializing Resource Descriptor Table at 0:55
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+23	78	35	34	87	93	41	15	15	63	33	27	23	69	35	63	63	75	33	33
+
+Master completed Resource Descriptor Initialization at 2:85
+Master in Signal Handler; Ctrl+C interrupt received at 3:85
+
+Master cleaning up resources at 3:90
+
+Master Resource Descriptor Table's Shared Memory ID 12 has been detached and deleted at  4:105
+
+Master Clock Shared Memory ID 11 has been detached and deleted at 5:130
+
+Master terminating at time 6:145
+
+
+Master Initializing Resource Descriptor Table at 0:55
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+71	76	35	2	91	26	37	28	87	56	31	31	43	67	75	61	7	21	59	76
+
+Master completed Resource Descriptor Initialization at 2:85
+Master in Signal Handler; Ctrl+C interrupt received at 3:85
+
+Master cleaning up resources at 3:90
+
+Master Resource Descriptor Table's Shared Memory ID 51 has been detached and deleted at  4:105
+
+Master Clock Shared Memory ID 50 has been detached and deleted at 5:130
+
+Master terminating at 6:145
+
+
+Master Initializing Resource Descriptor Table at 0:55
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+2	43	48	7	58	27	32	28	26	27	52	83	10	19	10	77	34	56	48	34
+
+Master completed Resource Descriptor Initialization at 2:85
+Master in Signal Handler; Ctrl+C interrupt received at 3:85
+
+Master cleaning up resources at 3:90
+
+Master Resource Descriptor Table's Shared Memory ID 57 has been detached and deleted at  4:105
+
+Master Clock Shared Memory ID 56 has been detached and deleted at 5:130
+
+Master terminating at 6:145
+
+
+Master Initializing Resource Descriptor Table at 0:55
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+48	14	4	6	80	78	40	8	36	18	68	75	80	20	6	73	32	81	62	68
+
+Master completed Resource Descriptor Initialization at 2:85
+Master in Signal Handler; Ctrl+C interrupt received at 3:85
+
+Master cleaning up resources at 3:90
+
+Master Resource Descriptor Table's Shared Memory ID 32769 has been detached and deleted at  4:105
+
+Master Clock Shared Memory ID 63 has been detached and deleted at 5:130
+
+Master terminating at 6:145
+
+
+Master Initializing Resource Descriptor Table at 0:55
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+23	1	5	87	55	73	3	91	47	5	73	2	23	64	53	33	19	33	57	73
+
+Master completed Resource Descriptor Initialization at 2:85
+
+Master Initializing Resource Descriptor Table at 0:55
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+37	62	25	24	29	82	15	23	5	39	17	16	29	62	53	52	53	4	63	26
+
+Master completed Resource Descriptor Initialization at 2:85
+Master cleaning up resources at 2:90
+
+Master Resource Descriptor Table's Shared Memory ID 32782 has been detached and deleted at  3:105
+
+Master Clock Shared Memory ID 32781 has been detached and deleted at 4:130
+
+Master timed out. Master terminating at 5:135
+
+Master Initializing Resource Descriptor Table at 0:55
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+86	13	90	50	34	11	80	10	6	62	76	48	2	1	76	76	34	11	34	40
+
+Master completed Resource Descriptor Initialization at 2:85
+Master timed out at 3:90
+Master cleaning up resources at 3:95
+
+Master Resource Descriptor Table's Shared Memory ID 27 has been detached and deleted at  4:110
+
+Master Clock Shared Memory ID 23 has been detached and deleted at 5:135
+
+Master timed out. Master terminating at 6:140
+
+Master Initializing Resource Descriptor Table at 0:55
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+54	12	30	34	18	44	54	66	82	2	84	39	34	63	48	19	30	81	46	12
+
+Master completed Resource Descriptor Initialization at 2:85
+Master timed out at 3:90
+Master cleaning up resources at 3:95
+
+Master Resource Descriptor Table's Shared Memory ID 41 has been detached and deleted at  4:110
+
+Master Clock Shared Memory ID 38 has been detached and deleted at 5:135
+
+Master terminating at 6:140
