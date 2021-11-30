@@ -42,6 +42,8 @@ void initclock(void);   //function to initialize the two clocks in shared memory
 
 void initResourceTable(void);   //function to initialize and instantiate resources R0 to R19
 
+void printResourceAvailabilityTable(void);  //to print out the number of available resources
+
 void cleanUp(void);
 
 void siginthandler(int);    //handles Ctrl+C interrupt
@@ -54,7 +56,7 @@ unsigned int resourceTableID;  //used for initializing resource Table Structure
 
 unsigned int ossofflinesecondclock; unsigned int ossofflinenanosecondclock; //used as offline clock before detaching from the oss clock shared memory
 
-char *logfilename = "logfile.log"; char logstring[4096];
+char *logfilename = "logfile.log"; char logstring[4096]; 
 
 
 
@@ -66,9 +68,9 @@ int main(int argc, char *argv[]){   //start of main() function
 
     alarm(oss_run_timeout); //fires timeout alarm after oss_run_timeout seconds defined in the config.h file
 
-    struct msgqueue resourceMessage;    //to communicate resource request and release messages with the master
+    struct msgqueue resourceMessage;    //to communicate resource request and release messages with the user process
 
-    printf("\nMaster pid is %d\n", getpid());
+    printf("\nMaster Process ID is %d\n", getpid());
     
     //this block initializes the ossclock
 
@@ -87,6 +89,8 @@ int main(int argc, char *argv[]){   //start of main() function
     //testing message queue here
 
     resourceMessageQueueID = msgget(message_queue_key, IPC_CREAT|0766); //creates the message queue and gets the queue id
+
+    printf("\nMessage Queue ID is %d\n", resourceMessageQueueID);
 
     if (resourceMessageQueueID == -1){  //error checking the message queue creation
 
@@ -114,16 +118,18 @@ int main(int argc, char *argv[]){   //start of main() function
 
     if (pid == 0){  //child process was created
 
-        printf("\nChild process %d was created\n", getpid());
+        printf("\nUser Process %d was created\n", getpid());
 
         execl("./user_proc", "./user_proc", NULL);      //execute user_proc
     }
     
-    int msgrcverr, msgsnderr; char resourceRequest[4];
+    int msgrcverr, msgsnderr; char resourceRequest[15]; char resourceReturnCopy[15]; 
 
     char *resourceNum, *resourceID; char *firstToken, *secondToken, *thirdToken;
 
     while (1){
+
+        printf("\nMaster waiting for resource requests or returns\n");
 
         msgrcverr = msgrcv(resourceMessageQueueID, &resourceMessage, sizeof(resourceMessage), 0, 0); long int mtype;
 
@@ -133,6 +139,8 @@ int main(int argc, char *argv[]){   //start of main() function
 
             break;
         }
+
+        printf("\nMaster received signal from message queue\n");
 
         mtype = resourceMessage.msgtype; //store message type received above
 
@@ -148,78 +156,105 @@ int main(int argc, char *argv[]){   //start of main() function
 
             thirdToken = strtok(NULL, " ");     //thirdToken is the name of the resource returned like R2
 
-            printf("\nProcess %d returned resource %s\n", resourceMessage.msgtype, resourceMessage.msgcontent);
+            strcat(resourceReturnCopy, ""); strcat(resourceReturnCopy, secondToken); strcat(resourceReturnCopy, " "); strcat(resourceReturnCopy, thirdToken); 
+
+            printf("\nProcess %d returned resource %s\n", mtype, resourceReturnCopy);
 
             for (int i = 0; i < 20; i++){
 
                 if (strcmp(r_descriptorAddress[i].resourceName, thirdToken) == 0){ //search for the resource in shared memory by resource name
 
-                    //convert secondToken to int
-
-                    int numberOfResource = strtol(secondToken, NULL, 10);
+                    int numberOfResource = strtol(secondToken, NULL, 10);   //convert secondToken to int
 
                     r_descriptorAddress[i].allocatedResource -=  numberOfResource;  //subtract secondToken
 
                     r_descriptorAddress[i].availableResource += numberOfResource;   //add secondToken
 
+                    printf("\nAvailable %s is now %d\n", thirdToken, r_descriptorAddress[i].availableResource);
+
                 }
 
             }
+
+            snprintf(logstring, sizeof(logstring), "\nMaster Received a Resource Return from Process %d at %hu:%hu\n", mtype, *osstimeseconds, *osstimenanoseconds);
+
+            logmsg(logfilename, logstring); //calling logmsg() to write to file
+
+            printResourceAvailabilityTable();   //display available resources
 
         }
 
-        int numOfResources = strtol(firstToken, NULL, 10); //convert firstToken to int
+        else{
 
-        secondToken = strtok(NULL, " "); //secondToken is the resource name here and firstToken will contain the number of resource
+            int numOfResources = strtol(firstToken, NULL, 10); //convert firstToken to int
 
-        printf("\nMaster received request for resource %s from Process %d\n", secondToken, mtype);  
+            secondToken = strtok(NULL, " "); //secondToken is the resource name here and firstToken will contain the number of resource
 
-        //printf("\nmessage type is still %d", resourceMessage.msgtype);
+            printf("\nMaster received request for resource %d %s from Process %d\n", numOfResources, secondToken, mtype);  
 
-        for (int i = 0; i < 20; i++){
+            for (int i = 0; i < 20; i++){
 
-            if (strcmp(r_descriptorAddress[i].resourceName, secondToken) == 0){ //search for the resource in shared memory by resource name
+                if (strcmp(r_descriptorAddress[i].resourceName, secondToken) == 0){ //search for the resource in shared memory by resource name
 
-                if (r_descriptorAddress[i].availableResource >= numOfResources){     //if resource is available                      
+                    printf("\nResource %s found.\n", secondToken);
+                    if (r_descriptorAddress[i].availableResource >= numOfResources){     //if resource is available                      
 
-                    r_descriptorAddress[i].allocatedResource+=numOfResources;    //increment allocatedResource by number requested
+                        r_descriptorAddress[i].allocatedResource+=numOfResources;    //increment allocatedResource by number requested
 
-                    r_descriptorAddress[i].availableResource = r_descriptorAddress[i].totalResource - r_descriptorAddress[i].allocatedResource;    //decrement available resource 
+                        r_descriptorAddress[i].availableResource = r_descriptorAddress[i].totalResource - r_descriptorAddress[i].allocatedResource;    //decrement available resource 
 
-                   strcpy(resourceMessage.msgcontent, "1"); //send 1 to user process to indicate resource was granted
-                   resourceMessage.msgtype = mtype;
+                    strcpy(resourceMessage.msgcontent, "1"); //send 1 to user process to indicate resource was granted
+                    resourceMessage.msgtype = mtype;
 
-                    msgsnderr = msgsnd(resourceMessageQueueID, &resourceMessage, sizeof(resourceMessage), 0);   //send message granted to user process
+                        msgsnderr = msgsnd(resourceMessageQueueID, &resourceMessage, sizeof(resourceMessage), IPC_NOWAIT);   //send message granted to user process
+
+                        sleep(3);
+
+                        printf("\nResource available; Master sent message type %d and message content %s to user process\n", mtype, "1");
+
+                        snprintf(logstring, sizeof(logstring), "\nMaster granted %d %s to Process %d at %hu:%hu\n\n", numOfResources, secondToken, mtype, *osstimeseconds, *osstimenanoseconds);
+
+                        logmsg(logfilename, logstring); //calling logmsg() to write to file
+
+                        printResourceAvailabilityTable();
+                    }
+
+                    else{   //terminate user process if enough resource is not available to avoid deadlock
+
+                            printf("\nMaster denying user process %d resource %s for insufficient availability of resource\n", mtype, secondToken);
+
+                            resourceMessage.msgtype = mtype;
+
+                            strcpy(resourceMessage.msgcontent, "-1");   //send user process -1 if resource is not available
+
+                            msgsnderr = msgsnd(resourceMessageQueueID, &resourceMessage, sizeof(resourceMessage), IPC_NOWAIT);
+
+                            printf("\nResource unavailable; Master sent message type %d and message content %s to user process\n", mtype, "-1");
+
+                            sleep(3);
+
+                            printf("\nMaster terminating user process %d to avoid deadlock\n", mtype);
+
+                            kill(mtype, SIGKILL);
+
+                            snprintf(logstring, sizeof(logstring), "\nMaster denied %d %s to Process %d at %hu:%hu to avoid deadlock\n", numOfResources, secondToken, mtype, *osstimeseconds, *osstimenanoseconds);
+
+                            logmsg(logfilename, logstring); //calling logmsg() to write to file
+
+                            printResourceAvailabilityTable();
+
+                            break;
+
+                    }
+
                 }
 
-                else{   //terminate user process if enough resource is not available to avoid deadlock
-
-                        printf("\nMaster denying user process %d resource %s\n", mtype, secondToken);
-
-                        resourceMessage.msgtype = mtype;
-
-                        strcpy(resourceMessage.msgcontent, "-1");   //send user process -1 if resource is not available
-
-                        msgsnderr = msgsnd(resourceMessageQueueID, &resourceMessage, sizeof(resourceMessage), 0);
-
-                        printf("\nMaster killing user process %d to avoid deadlock\n", mtype);
-
-                        kill(mtype, SIGKILL);
-
-                }
 
             }
-
-
         }
 
         sleep(5);
     }
-
-    int pid_check = waitpid(pid, NULL, WNOHANG);
-
-    if (pid_check > 0)
-        printf("\nChild process completed execution\n");
 
     cleanUp();      //call cleanup before exiting main() to free up used resources
 
@@ -254,7 +289,7 @@ void initclock(){ //initializes the seconds and nanoseconds parts of the oss
 void initResourceTable(void){
 
     char name[3]; 
-    *r_descriptorAddress;  //struct pointer to traverse the shared memory
+    //r_descriptorAddress;  //struct pointer to traverse the shared memory
     int randomNumberResult;
 
     r_descriptorAddress  = shmat(resourceTableID, NULL, 0); //shmat returns the address of the shared memory, receive the address into a structure pointer variable
@@ -266,7 +301,7 @@ void initResourceTable(void){
 
     }
 
-    snprintf(logstring, sizeof(logstring), "\n\nMaster Initializing Resource Descriptor Table at %hu:%hu\n\n", *osstimeseconds, *osstimenanoseconds+=55);
+    snprintf(logstring, sizeof(logstring), "\nMaster Initializing Resource Descriptor Table at %hu:%hu\n\n", *osstimeseconds, *osstimenanoseconds+=55);
 
     logmsg(logfilename, logstring); //calling logmsg() to write to file
 
@@ -340,18 +375,74 @@ void initResourceTable(void){
 
     logmsg(logfilename, logstring);
 
-    snprintf(logstring, sizeof(logstring), "\n\nMaster completed Resource Descriptor Initialization at %hu:%hu", *osstimeseconds+=2, *osstimenanoseconds+=30);
+    snprintf(logstring, sizeof(logstring), "\n\nMaster completed Resource Descriptor Initialization at %hu:%hu\n", *osstimeseconds+=2, *osstimenanoseconds+=30);
     
     logmsg(logfilename, logstring);
 
 }   //end of initResourceTable()
 
 
+void printResourceAvailabilityTable(void){  //prints the number of available resources when called
+
+    snprintf(logstring, sizeof(logstring), "\nMaster Generating Resource Availability Table at %hu:%hu\n\n", *osstimeseconds, *osstimenanoseconds+=55);
+
+    logmsg(logfilename, logstring); //calling logmsg() to write to file
+
+
+    for (int i = 0; i <= 20; i++){       
+
+       if (i == 0){
+
+            strcpy(logstring, r_descriptorAddress[i].resourceName);
+            printf("%s \t", r_descriptorAddress[i].resourceName);
+            continue;
+       }
+
+       if (i == 20){
+
+           printf("\n");
+           strcat(logstring, "\n\n");
+           break;
+       }
+
+        strcat(logstring, "\t");
+        strcat(logstring, r_descriptorAddress[i].resourceName);
+        printf("%s \t", r_descriptorAddress[i].resourceName);
+    }
+
+
+    for (int i = 0; i < 20; i++){
+
+        char resourceToString[4];
+        sprintf(resourceToString, "%d", r_descriptorAddress[i].availableResource); //converts int to string
+
+        if (i == 0){
+            
+            strcat(logstring, resourceToString);
+            printf("%d \t", r_descriptorAddress[i].availableResource);
+            continue;
+       }
+       
+        strcat(logstring, "\t");
+        strcat(logstring, resourceToString);
+        printf("%d \t", r_descriptorAddress[i].availableResource);
+
+    }
+
+    logmsg(logfilename, logstring);
+
+    snprintf(logstring, sizeof(logstring), "\n\nMaster printed Resource Availability Table at %hu:%hu\n", *osstimeseconds, *osstimenanoseconds+=30);
+    
+    logmsg(logfilename, logstring);
+
+}
+
+
 void cleanUp(void){ //frees up used resources including shared memory
 
     printf("\nCleaning up used resources....\n");
 
-    snprintf(logstring, sizeof(logstring), "\nMaster cleaning up resources at %hu:%hu", *osstimeseconds, *osstimenanoseconds+=5);
+    snprintf(logstring, sizeof(logstring), "\nMaster cleaning up resources at %hu:%hu\n", *osstimeseconds, *osstimenanoseconds+=5);
     logmsg(logfilename, logstring);
 
     //Now detach and delete shared memories
@@ -371,7 +462,7 @@ void cleanUp(void){ //frees up used resources including shared memory
 
     printf("\nMaster resource table shared memory ID %hu was deleted.\n\n", resourceTableID);
 
-    snprintf(logstring, sizeof(logstring), "\n\nMaster Resource Descriptor Table's Shared Memory ID %hu has been detached and deleted at  %hu:%hu\n", resourceTableID, *osstimeseconds+=1, *osstimenanoseconds+=15);
+    snprintf(logstring, sizeof(logstring), "\nMaster Resource Descriptor Table's Shared Memory ID %hu has been detached and deleted at  %hu:%hu\n", resourceTableID, *osstimeseconds+=1, *osstimenanoseconds+=15);
     logmsg(logfilename, logstring);
 
     ossofflinesecondclock = *osstimeseconds; ossofflinenanosecondclock = *osstimenanoseconds; //save the clock before detaching from clock shared memory
@@ -395,6 +486,18 @@ void cleanUp(void){ //frees up used resources including shared memory
 
     snprintf(logstring, sizeof(logstring), "\nMaster Clock Shared Memory ID %hu has been detached and deleted at %hu:%hu\n", ossclockid, ossofflinesecondclock, ossofflinenanosecondclock);
     logmsg(logfilename, logstring);
+
+    if ( msgctl(resourceMessageQueueID, IPC_RMID, 0) == 0)
+        printf("\nMessage Queue ID %d has been removed.\n", resourceMessageQueueID);
+
+    else{    
+        printf("\nErrror: Master in cleanUp(), Message Queue removal failed!\n");
+        exit(1);
+    }
+
+    snprintf(logstring, sizeof(logstring), "\nMaster removed Messaqe Queue ID %d at %hu:%hu\n", resourceMessageQueueID, ossofflinesecondclock, ossofflinenanosecondclock+=15);
+    logmsg(logfilename, logstring);
+
 
 }   //end of cleanUP()
 
