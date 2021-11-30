@@ -14,22 +14,33 @@
 #include<sys/sem.h>
 #include "config.h"
 
+/*Author Idris Adeleke CS4760 Project 5 - Resource Management*/
+//This is the user_proc application that gets called by the execl command inside runsim's child processes
+
 typedef struct resources{
     
     char resourceName[4]; //resourceName = R1, R2....R20
     int totalResource; //total resource in system
     int allocatedResource;   //currently allocated resource
     int availableResource;  //currently available resource
+    int processIndex[18];   //to track which process is allocated a resource; maximum of 18 processes
+    int processAllocation[18];  //to track how many resource instances a process is allocated
 
-} resource;
+} resource; //try an integer array int processTracker[18] to track which process has what resources
+
+struct msgqueue{
+
+    long int msgtype;
+    char msgcontent[15];
+};
+
+int resourceMessageQueueID;  //message queue ID
 
 resource *r_descriptorAddress;  //struct pointer to traverse the shared memory
 
 void initclock(void);   //function to initialize the two clocks in shared memory
 
 void initResourceTable(void);   //function to initialize and instantiate resources R0 to R19
-
-int randomNumber(int , int ); //fucntion to generate random nunbers
 
 void cleanUp(void);
 
@@ -54,6 +65,10 @@ int main(int argc, char *argv[]){   //start of main() function
     signal(SIGALRM, timeouthandler); //handles the timeout signal
 
     alarm(oss_run_timeout); //fires timeout alarm after oss_run_timeout seconds defined in the config.h file
+
+    struct msgqueue resourceMessage;    //to communicate resource request and release messages with the master
+
+    printf("\nMaster pid is %d\n", getpid());
     
     //this block initializes the ossclock
 
@@ -69,6 +84,20 @@ int main(int argc, char *argv[]){   //start of main() function
 
     printf("\nMaster clock initialized at %hu:%hu\n", *osstimeseconds, *osstimenanoseconds); //print out content of ossclock after initialization
 
+    //testing message queue here
+
+    resourceMessageQueueID = msgget(message_queue_key, IPC_CREAT|0766); //creates the message queue and gets the queue id
+
+    if (resourceMessageQueueID == -1){  //error checking the message queue creation
+
+        perror("\nError: Master in Parent Process. Message queue creation failed\n");
+
+        exit(1);
+    }
+
+    //end of message queue testing
+
+
     resourceTableID = shmget(resourceTableKey, (sizeof(resource)*20), IPC_CREAT|0766); //create a shared memory allocation for 20 resources
 
     if (resourceTableID == -1){  //checking if shared memory id was successfully created
@@ -80,7 +109,118 @@ int main(int argc, char *argv[]){   //start of main() function
     initResourceTable(); //calls function to initialize the resource table data structure
 
     printf("\n\nMaster Resource Desctiptor Table was successfully initialized. Size of Table is %d bytes\n\n", (sizeof(resource)*20)); //print out content of ossclock after initialization
-    while (1);
+   
+    int pid = fork();
+
+    if (pid == 0){  //child process was created
+
+        printf("\nChild process %d was created\n", getpid());
+
+        execl("./user_proc", "./user_proc", NULL);      //execute user_proc
+    }
+    
+    int msgrcverr, msgsnderr; char resourceRequest[4];
+
+    char *resourceNum, *resourceID; char *firstToken, *secondToken, *thirdToken;
+
+    while (1){
+
+        msgrcverr = msgrcv(resourceMessageQueueID, &resourceMessage, sizeof(resourceMessage), 0, 0); long int mtype;
+
+        if (msgrcverr == -1){ //error checking msgrcverror()
+
+            perror("\nMaster in oss main() function. msgrcv() failed!");
+
+            break;
+        }
+
+        mtype = resourceMessage.msgtype; //store message type received above
+
+        strcpy(resourceRequest, resourceMessage.msgcontent);
+
+        printf("Inside Master, message type is %d and message content is %s\n", mtype, resourceRequest);
+        
+        firstToken = strtok(resourceRequest, " ");
+
+        if (strcmp(firstToken, "return") == 0){    //if first resource keyword is "return"
+
+            secondToken = strtok(NULL, " ");    //secondToken is number of resources returned
+
+            thirdToken = strtok(NULL, " ");     //thirdToken is the name of the resource returned like R2
+
+            printf("\nProcess %d returned resource %s\n", resourceMessage.msgtype, resourceMessage.msgcontent);
+
+            for (int i = 0; i < 20; i++){
+
+                if (strcmp(r_descriptorAddress[i].resourceName, thirdToken) == 0){ //search for the resource in shared memory by resource name
+
+                    //convert secondToken to int
+
+                    int numberOfResource = strtol(secondToken, NULL, 10);
+
+                    r_descriptorAddress[i].allocatedResource -=  numberOfResource;  //subtract secondToken
+
+                    r_descriptorAddress[i].availableResource += numberOfResource;   //add secondToken
+
+                }
+
+            }
+
+        }
+
+        int numOfResources = strtol(firstToken, NULL, 10); //convert firstToken to int
+
+        secondToken = strtok(NULL, " "); //secondToken is the resource name here and firstToken will contain the number of resource
+
+        printf("\nMaster received request for resource %s from Process %d\n", secondToken, mtype);  
+
+        //printf("\nmessage type is still %d", resourceMessage.msgtype);
+
+        for (int i = 0; i < 20; i++){
+
+            if (strcmp(r_descriptorAddress[i].resourceName, secondToken) == 0){ //search for the resource in shared memory by resource name
+
+                if (r_descriptorAddress[i].availableResource >= numOfResources){     //if resource is available                      
+
+                    r_descriptorAddress[i].allocatedResource+=numOfResources;    //increment allocatedResource by number requested
+
+                    r_descriptorAddress[i].availableResource = r_descriptorAddress[i].totalResource - r_descriptorAddress[i].allocatedResource;    //decrement available resource 
+
+                   strcpy(resourceMessage.msgcontent, "1"); //send 1 to user process to indicate resource was granted
+                   resourceMessage.msgtype = mtype;
+
+                    msgsnderr = msgsnd(resourceMessageQueueID, &resourceMessage, sizeof(resourceMessage), 0);   //send message granted to user process
+                }
+
+                else{   //terminate user process if enough resource is not available to avoid deadlock
+
+                        printf("\nMaster denying user process %d resource %s\n", mtype, secondToken);
+
+                        resourceMessage.msgtype = mtype;
+
+                        strcpy(resourceMessage.msgcontent, "-1");   //send user process -1 if resource is not available
+
+                        msgsnderr = msgsnd(resourceMessageQueueID, &resourceMessage, sizeof(resourceMessage), 0);
+
+                        printf("\nMaster killing user process %d to avoid deadlock\n", mtype);
+
+                        kill(mtype, SIGKILL);
+
+                }
+
+            }
+
+
+        }
+
+        sleep(5);
+    }
+
+    int pid_check = waitpid(pid, NULL, WNOHANG);
+
+    if (pid_check > 0)
+        printf("\nChild process completed execution\n");
+
     cleanUp();      //call cleanup before exiting main() to free up used resources
 
     return 0;
@@ -90,7 +230,7 @@ int main(int argc, char *argv[]){   //start of main() function
 
 //initclock() function initializes the ossclock 
 
-void initclock(void){ //initializes the seconds and nanoseconds parts of the oss
+void initclock(){ //initializes the seconds and nanoseconds parts of the oss
 
     ossclockaddress = shmat(ossclockid, NULL, 0); //shmat returns the address of the shared memory
     if (ossclockaddress == (void *) -1){
@@ -142,13 +282,15 @@ void initResourceTable(void){
 
         strcpy(r_descriptorAddress[i].resourceName, rname); //copies rname to resourceName
 
-        randomNumberResult = randomNumber(1, (100-i));  //generate a number between 1 and 90 to initialize the total instances of resource R[i]
+        randomNumberResult = randomNumber(1, 10);  //generate a number between 1 and 90 to initialize the total instances of resource R[i]
+
+        sleep(1);
 
         r_descriptorAddress[i].totalResource = randomNumberResult; //initalize resources with random values
 
         r_descriptorAddress[i].allocatedResource = 0;
 
-        r_descriptorAddress[i].availableResource = 0;
+        r_descriptorAddress[i].availableResource = r_descriptorAddress[i].totalResource;    //available resource = total resource at the initial state
 
     }
 
@@ -203,16 +345,6 @@ void initResourceTable(void){
     logmsg(logfilename, logstring);
 
 }   //end of initResourceTable()
-
-
-int randomNumber(int lowertimelimit, int uppertimelimit){
-
-    int randNum = 0;
-    srand(time(NULL));          //initilize the rand function
-    randNum = (rand() % ((uppertimelimit - lowertimelimit) + 1)) + lowertimelimit; //this logic produces a number between lowertimelit and uppertimelimit
-    return randNum;
-
-}   //end of randomNumber()
 
 
 void cleanUp(void){ //frees up used resources including shared memory

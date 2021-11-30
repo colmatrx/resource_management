@@ -5,4 +5,6 @@
 #define ossclockkey 1980725
 #define messageqkey 1302456
 #define pcbsemaphorekey 202015
+#define message_queue_key 140699
 void logmsg(char *filename, const char *msg);
+int randomNumber(int lowertimelimit, int uppertimelimit);

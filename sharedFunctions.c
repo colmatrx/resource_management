@@ -13,7 +13,6 @@
 #include<getopt.h>
 #include"config.h"
 
-
 void logmsg(char *filename, const char *msg){       //this function is for writing to logfile
 
     FILE *filedescriptor;
@@ -28,3 +27,12 @@ void logmsg(char *filename, const char *msg){       //this function is for writi
     fputs(msg, filedescriptor);    //writes log message to file
     fclose(filedescriptor);
 }
+
+int randomNumber(int lowertimelimit, int uppertimelimit){
+
+    int randNum = 0;
+    srand(time(NULL));          //initilize the rand function
+    randNum = (rand() % ((uppertimelimit - lowertimelimit) + 1)) + lowertimelimit; //this logic produces a number between lowertimelit and uppertimelimit
+    return randNum;
+
+}   //end of randomNumber()
