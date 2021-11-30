@@ -30,7 +30,7 @@ int main(int argc, char *argv[]){
     int randomResourceID, randomResourceNum, msgsnderror, msgrcverror; 
     char rand_name[3];  //to store converted rand as string
     char resourceToken[4] = "R"; char returnString[15] = "return";
-    long int userpid = getpid(); 
+    //long int userpid = getpid(); 
     char *messageFromMaster;    //to store message content received from MAster
     long int pidFromMaster;
     
@@ -77,7 +77,7 @@ int main(int argc, char *argv[]){
 
     printf("\nUser Process %d is requesting resource %s from Master\n", getpid(), user_rname);
 
-    msgrcverror = msgrcv(resourceMessageID, &resourceMessageChild, sizeof(resourceMessageChild), userpid, 0); //receive message back from master
+    msgrcverror = msgrcv(resourceMessageID, &resourceMessageChild, sizeof(resourceMessageChild), getpid(), 0); //receive message back from master
 
     if (msgrcverror == -1){ //error checking msgrcverror()
 
@@ -93,7 +93,7 @@ int main(int argc, char *argv[]){
         exit(1);
     }        
 
-    printf("\nResource %s granted by Master\n", user_rname);
+    printf("\nResource %s granted by Master to Process %d\n", user_rname, getpid());
 
     while ((newrand = randomNumber(0,19)) != randomResourceNum){  
 

@@ -1619,3 +1619,566 @@ Master Clock Shared Memory ID 32781 has been detached and deleted at 5:215
 Master removed Messaqe Queue ID 6 at 5:230
 
 Master terminating at 6:245
+
+Master Initializing Resource Descriptor Table at 0:55
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+3	6	10	3	8	7	2	4	5	3	1	7	2	8	6	10	5	10	2	9
+
+Master completed Resource Descriptor Initialization at 2:85
+
+Master has detected Process 10183 requesting 19 R6 at 2:90
+
+
+Master running deadlock avoidance algorithm at 2:95
+
+
+Master denied 19 R6 to Process 10183 at 2:95 to avoid deadlock
+
+Master Generating Resource Availability Table at 2:150
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+3	6	10	3	8	7	2	4	5	3	1	7	2	8	6	10	5	10	2	9
+
+Master printed Resource Availability Table at 2:180
+
+Master timed out at 3:185
+Master cleaning up resources at 3:190
+
+Master Resource Descriptor Table's Shared Memory ID 32795 has been detached and deleted at  4:205
+
+Master Clock Shared Memory ID 32794 has been detached and deleted at 5:230
+
+Master removed Messaqe Queue ID 7 at 5:245
+
+Master terminating at 6:250
+Master Initializing Resource Descriptor Table at 0:55
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+4	3	5	10	10	6	10	9	6	7	7	1	4	5	4	5	7	4	6	9
+
+Master completed Resource Descriptor Initialization at 2:85
+
+Master has detected Process 11829 requesting 4 R12 at 2:144
+
+Master running deadlock avoidance algorithm at 2:149
+
+Master granted 4 R12 to Process 11829 at 2:149
+
+
+Master Generating Resource Availability Table at 2:204
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+4	3	5	10	10	6	10	9	6	7	7	1	0	5	4	5	7	4	6	9
+
+Master printed Resource Availability Table at 2:234
+
+Master Acknowledged Process 11833 Released 4 R12 at 3:234
+
+Master Generating Resource Availability Table at 3:289
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+4	3	5	10	10	6	10	9	6	7	7	1	4	5	4	5	7	4	6	9
+
+Master printed Resource Availability Table at 3:319
+
+Master Acknowledged Process 11839 Released 4 R12 at 4:319
+
+Master Generating Resource Availability Table at 4:374
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+4	3	5	10	10	6	10	9	6	7	7	1	8	5	4	5	7	4	6	9
+
+Master printed Resource Availability Table at 4:404
+
+Master Acknowledged Process 11829 Released 4 R12 at 5:404
+
+Master Generating Resource Availability Table at 5:459
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+4	3	5	10	10	6	10	9	6	7	7	1	12	5	4	5	7	4	6	9
+
+Master printed Resource Availability Table at 5:489
+
+Master Acknowledged Process 11831 Released  R12 12 at 6:489
+
+Master Generating Resource Availability Table at 6:544
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+4	3	5	10	10	6	10	9	6	7	7	1	12	5	4	5	7	4	6	9
+
+Master printed Resource Availability Table at 6:574
+
+Master Acknowledged Process 11834 Released  R12 12 at 7:574
+
+Master Generating Resource Availability Table at 7:629
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+4	3	5	10	10	6	10	9	6	7	7	1	12	5	4	5	7	4	6	9
+
+Master printed Resource Availability Table at 7:659
+
+Master Acknowledged Process 11837 Released  R12 12 at 8:659
+
+Master Generating Resource Availability Table at 8:714
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+4	3	5	10	10	6	10	9	6	7	7	1	12	5	4	5	7	4	6	9
+
+Master printed Resource Availability Table at 8:744
+
+Master Acknowledged Process 11828 Released  R12 12 at 9:744
+
+Master Generating Resource Availability Table at 9:799
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+4	3	5	10	10	6	10	9	6	7	7	1	12	5	4	5	7	4	6	9
+
+Master printed Resource Availability Table at 9:829
+
+Master Acknowledged Process 11841 Released  R12 12 at 10:829
+
+Master Generating Resource Availability Table at 10:884
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+4	3	5	10	10	6	10	9	6	7	7	1	12	5	4	5	7	4	6	9
+
+Master printed Resource Availability Table at 10:914
+
+Master Acknowledged Process 11838 Released  R12 12 at 11:914
+
+Master Generating Resource Availability Table at 11:969
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+4	3	5	10	10	6	10	9	6	7	7	1	12	5	4	5	7	4	6	9
+
+Master printed Resource Availability Table at 11:999
+
+Master Acknowledged Process 11845 Released  R12 12 at 12:999
+
+Master Generating Resource Availability Table at 12:1054
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+4	3	5	10	10	6	10	9	6	7	7	1	12	5	4	5	7	4	6	9
+
+Master printed Resource Availability Table at 12:1084
+
+Master Acknowledged Process 11843 Released  R12 12 at 13:1084
+
+Master Generating Resource Availability Table at 13:1139
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+4	3	5	10	10	6	10	9	6	7	7	1	12	5	4	5	7	4	6	9
+
+Master printed Resource Availability Table at 13:1169
+
+Master Acknowledged Process 11842 Released  R12 12 at 14:1169
+
+Master Generating Resource Availability Table at 14:1224
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+4	3	5	10	10	6	10	9	6	7	7	1	12	5	4	5	7	4	6	9
+
+Master printed Resource Availability Table at 14:1254
+
+Master Acknowledged Process 11830 Released  R12 12 at 15:1254
+
+Master Generating Resource Availability Table at 15:1309
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+4	3	5	10	10	6	10	9	6	7	7	1	12	5	4	5	7	4	6	9
+
+Master printed Resource Availability Table at 15:1339
+
+Master Acknowledged Process 11840 Released  R12 12 at 16:1339
+
+Master Generating Resource Availability Table at 16:1394
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+4	3	5	10	10	6	10	9	6	7	7	1	12	5	4	5	7	4	6	9
+
+Master printed Resource Availability Table at 16:1424
+
+Master Acknowledged Process 11844 Released  R12 12 at 17:1424
+
+Master Generating Resource Availability Table at 17:1479
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+4	3	5	10	10	6	10	9	6	7	7	1	12	5	4	5	7	4	6	9
+
+Master printed Resource Availability Table at 17:1509
+
+Master Acknowledged Process 11832 Released  R12 12 at 18:1509
+
+Master Generating Resource Availability Table at 18:1564
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+4	3	5	10	10	6	10	9	6	7	7	1	12	5	4	5	7	4	6	9
+
+Master printed Resource Availability Table at 18:1594
+
+Master Acknowledged Process 11836 Released  R12 12 at 19:1594
+
+Master Generating Resource Availability Table at 19:1649
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+4	3	5	10	10	6	10	9	6	7	7	1	12	5	4	5	7	4	6	9
+
+Master printed Resource Availability Table at 19:1679
+
+Master Acknowledged Process 11835 Released  R12 12 at 20:1679
+
+Master Generating Resource Availability Table at 20:1734
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+4	3	5	10	10	6	10	9	6	7	7	1	12	5	4	5	7	4	6	9
+
+Master printed Resource Availability Table at 20:1764
+
+Master in Signal Handler; Ctrl+C interrupt received at 21:1764
+
+Master cleaning up resources at 21:1769
+
+Master Resource Descriptor Table's Shared Memory ID 32807 has been detached and deleted at  22:1784
+
+Master Clock Shared Memory ID 32806 has been detached and deleted at 23:1809
+
+Master removed Messaqe Queue ID 8 at 23:1824
+
+Master terminating at 24:1839
+
+Master Initializing Resource Descriptor Table at 0:55
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+1	7	2	6	6	2	4	2	9	9	5	1	3	6	2	7	2	5	9	6
+
+Master completed Resource Descriptor Initialization at 2:85
+
+Master has detected Process 11961 requesting 12 R3 at 2:98
+
+Master running deadlock avoidance algorithm at 2:103
+
+Master denied 12 R3 to Process 11961 at 2:103 to avoid deadlock
+
+Master Generating Resource Availability Table at 2:158
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+1	7	2	6	6	2	4	2	9	9	5	1	3	6	2	7	2	5	9	6
+
+Master printed Resource Availability Table at 2:188
+
+Master Acknowledged Process 11960 Released 12 R3 at 3:188
+
+Master Generating Resource Availability Table at 3:243
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+1	7	2	18	6	2	4	2	9	9	5	1	3	6	2	7	2	5	9	6
+
+Master printed Resource Availability Table at 3:273
+
+Master timed out at 4:278
+Master cleaning up resources at 4:283
+
+Master Resource Descriptor Table's Shared Memory ID 32809 has been detached and deleted at  5:298
+
+Master Clock Shared Memory ID 32808 has been detached and deleted at 6:323
+
+Master removed Messaqe Queue ID 9 at 6:338
+
+Master terminating at 7:343
+Master Initializing Resource Descriptor Table at 0:55
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+1	1	6	8	9	1	10	8	1	3	5	4	4	5	7	2	9	6	6	10
+
+Master completed Resource Descriptor Initialization at 2:85
+
+Master has detected Process 12175 requesting 16 R6 at 2:104
+
+Master running deadlock avoidance algorithm at 2:109
+
+Master denied 16 R6 to Process 12175 at 2:109 to avoid deadlock
+
+Master Generating Resource Availability Table at 2:164
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+1	1	6	8	9	1	10	8	1	3	5	4	4	5	7	2	9	6	6	10
+
+Master printed Resource Availability Table at 2:194
+
+Master Acknowledged Process 12176 Released 16 R6 at 3:194
+
+Master Generating Resource Availability Table at 3:249
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+1	1	6	8	9	1	26	8	1	3	5	4	4	5	7	2	9	6	6	10
+
+Master printed Resource Availability Table at 3:279
+
+Master in Signal Handler; Ctrl+C interrupt received at 4:279
+
+Master cleaning up resources at 4:284
+
+Master Resource Descriptor Table's Shared Memory ID 32818 has been detached and deleted at  5:299
+
+Master Clock Shared Memory ID 32817 has been detached and deleted at 6:324
+
+Master removed Messaqe Queue ID 10 at 6:339
+
+Master terminating at 7:354
+
+Master Initializing Resource Descriptor Table at 0:55
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+6	8	6	9	9	7	3	6	5	9	10	2	6	4	5	6	9	2	7	9
+
+Master completed Resource Descriptor Initialization at 2:85
+
+Master has detected Process 12389 requesting 16 R12 at 2:96
+
+Master running deadlock avoidance algorithm at 2:101
+
+Master denied 16 R12 to Process 12389 at 2:101 to avoid deadlock
+
+Master Generating Resource Availability Table at 2:156
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+6	8	6	9	9	7	3	6	5	9	10	2	6	4	5	6	9	2	7	9
+
+Master printed Resource Availability Table at 2:186
+
+Master Acknowledged Process 12390 Released 16 R12 at 3:186
+
+Master Generating Resource Availability Table at 3:241
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+6	8	6	9	9	7	3	6	5	9	10	2	22	4	5	6	9	2	7	9
+
+Master printed Resource Availability Table at 3:271
+
+Master in Signal Handler; Ctrl+C interrupt received at 4:271
+
+Master cleaning up resources at 4:276
+
+Master Resource Descriptor Table's Shared Memory ID 32820 has been detached and deleted at  5:291
+
+Master Clock Shared Memory ID 32819 has been detached and deleted at 6:316
+
+Master removed Messaqe Queue ID 11 at 6:331
+
+Master terminating at 7:346
+
+Master Initializing Resource Descriptor Table at 0:55
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+5	6	2	4	7	8	5	1	1	10	1	9	6	3	10	10	6	9	6	5
+
+Master completed Resource Descriptor Initialization at 2:85
+
+Master has detected Process 12565 requesting 10 R15 at 2:102
+
+Master running deadlock avoidance algorithm at 2:107
+
+Master granted 10 R15 to Process 12565 at 2:107
+
+
+Master Generating Resource Availability Table at 2:162
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+5	6	2	4	7	8	5	1	1	10	1	9	6	3	10	0	6	9	6	5
+
+Master printed Resource Availability Table at 2:192
+
+Master Acknowledged Process 12565 Released 10 R15 at 3:192
+
+Master Generating Resource Availability Table at 3:247
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+5	6	2	4	7	8	5	1	1	10	1	9	6	3	10	10	6	9	6	5
+
+Master printed Resource Availability Table at 3:277
+
+Master Acknowledged Process 12566 Released 10 R15 at 4:277
+
+Master Generating Resource Availability Table at 4:332
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+5	6	2	4	7	8	5	1	1	10	1	9	6	3	10	20	6	9	6	5
+
+Master printed Resource Availability Table at 4:362
+
+Master timed out at 5:367
+Master cleaning up resources at 5:372
+
+Master Resource Descriptor Table's Shared Memory ID 0 has been detached and deleted at  6:387
+
+Master Clock Shared Memory ID 32831 has been detached and deleted at 7:412
+
+Master removed Messaqe Queue ID 12 at 7:427
+
+Master terminating at 8:432
+Master Initializing Resource Descriptor Table at 0:55
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+2	6	9	4	7	5	6	6	10	1	2	9	9	10	8	6	4	4	6	8
+
+Master completed Resource Descriptor Initialization at 2:85
+
+Master has detected Process 12760 requesting 3 R3 at 2:98
+
+Master running deadlock avoidance algorithm at 2:103
+
+Master granted 3 R3 to Process 12760 at 2:103
+
+
+Master Generating Resource Availability Table at 2:158
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+2	6	9	1	7	5	6	6	10	1	2	9	9	10	8	6	4	4	6	8
+
+Master printed Resource Availability Table at 2:188
+
+Master in Signal Handler; Ctrl+C interrupt received at 3:188
+
+Master cleaning up resources at 3:193
+
+Master Resource Descriptor Table's Shared Memory ID 12 has been detached and deleted at  4:208
+
+Master Clock Shared Memory ID 11 has been detached and deleted at 5:233
+
+Master removed Messaqe Queue ID 13 at 5:248
+
+Master terminating at 6:263
+
+Master Initializing Resource Descriptor Table at 0:55
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	1	6	6	7	2	4	10	8	8	1	1	1	1	4	5	2	6	9	6
+
+Master completed Resource Descriptor Initialization at 2:85
+
+Master has detected Process 12901 requesting 1 R18 at 2:108
+
+Master running deadlock avoidance algorithm at 2:113
+
+Master granted 1 R18 to Process 12901 at 2:113
+
+
+Master Generating Resource Availability Table at 2:168
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	1	6	6	7	2	4	10	8	8	1	1	1	1	4	5	2	6	8	6
+
+Master printed Resource Availability Table at 2:198
+
+Master Acknowledged Process 12900 Released 1 R18 at 3:198
+
+Master Generating Resource Availability Table at 3:253
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	1	6	6	7	2	4	10	8	8	1	1	1	1	4	5	2	6	9	6
+
+Master printed Resource Availability Table at 3:283
+
+Master Acknowledged Process 12901 Released 1 R18 at 4:283
+
+Master Generating Resource Availability Table at 4:338
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	1	6	6	7	2	4	10	8	8	1	1	1	1	4	5	2	6	10	6
+
+Master printed Resource Availability Table at 4:368
+
+Master timed out at 5:373
+Master cleaning up resources at 5:378
+
+Master Resource Descriptor Table's Shared Memory ID 14 has been detached and deleted at  6:393
+
+Master Clock Shared Memory ID 13 has been detached and deleted at 7:418
+
+Master removed Messaqe Queue ID 14 at 7:433
+
+Master terminating at 8:438
+Master Initializing Resource Descriptor Table at 0:55
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+4	2	2	7	10	3	4	9	9	10	10	2	10	2	2	1	7	6	10	4
+
+Master completed Resource Descriptor Initialization at 2:85
+
+Master has detected Process 13050 requesting 8 R17 at 2:99
+
+Master running deadlock avoidance algorithm at 2:104
+
+Master denied 8 R17 to Process 13050 at 2:104 to avoid deadlock
+
+Master Generating Resource Availability Table at 2:159
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+4	2	2	7	10	3	4	9	9	10	10	2	10	2	2	1	7	6	10	4
+
+Master printed Resource Availability Table at 2:189
+
+Master Acknowledged Process 13047 Released 17 R0 at 3:189
+
+Master Generating Resource Availability Table at 3:244
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+21	2	2	7	10	3	4	9	9	10	10	2	10	2	2	1	7	6	10	4
+
+Master printed Resource Availability Table at 3:274
+
+Master timed out at 4:279
+Master cleaning up resources at 4:284
+
+Master Resource Descriptor Table's Shared Memory ID 25 has been detached and deleted at  5:299
+
+Master Clock Shared Memory ID 24 has been detached and deleted at 6:324
+
+Master removed Messaqe Queue ID 15 at 6:339
+
+Master terminating at 7:344

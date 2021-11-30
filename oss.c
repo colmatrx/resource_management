@@ -38,6 +38,8 @@ int resourceMessageQueueID;  //message queue ID
 
 resource *r_descriptorAddress;  //struct pointer to traverse the shared memory
 
+int processID[18];
+
 void initclock(void);   //function to initialize the two clocks in shared memory
 
 void initResourceTable(void);   //function to initialize and instantiate resources R0 to R19
@@ -58,7 +60,7 @@ unsigned int ossofflinesecondclock; unsigned int ossofflinenanosecondclock; //us
 
 char *logfilename = "logfile.log"; char logstring[4096]; 
 
-
+int pid; int randomTime;
 
 int main(int argc, char *argv[]){   //start of main() function
 
@@ -112,26 +114,49 @@ int main(int argc, char *argv[]){   //start of main() function
        
     initResourceTable(); //calls function to initialize the resource table data structure
 
-    printf("\n\nMaster Resource Desctiptor Table was successfully initialized. Size of Table is %d bytes\n\n", (sizeof(resource)*20)); //print out content of ossclock after initialization
+    printf("\nMaster Resource Desctiptor Table was successfully initialized. Size of Table is %d bytes\n\n", (sizeof(resource)*20)); //print out content of ossclock after initialization
    
-    int pid = fork();
+    for (int count = 0; count < 2; count++){       //randomly create user processes
 
-    if (pid == 0){  //child process was created
+        pid = fork();
 
-        printf("\nUser Process %d was created\n", getpid());
+        sleep(3);
 
-        execl("./user_proc", "./user_proc", NULL);      //execute user_proc
+        if (pid < 0){
+                perror("\nError: Master in main() function. fork() failed!");
+                exit(1);
+            }
+
+        if (pid > 0){
+
+            processID[count] = pid;
+        }
+
+        if (pid == 0){  //child process was created
+
+            printf("\nUser Process %d was created\n", getpid());
+
+            execl("./user_proc", "./user_proc", NULL);      //execute user_proc
+        }
+
+        randomTime = randomNumber(1,10);    //generate random number between 1 and 10
+
+        *osstimenanoseconds+=randomTime;    //increment oss nanosecond by randomTime
     }
     
     int msgrcverr, msgsnderr; char resourceRequest[15]; char resourceReturnCopy[15]; 
 
     char *resourceNum, *resourceID; char *firstToken, *secondToken, *thirdToken;
 
+    long int mtype;
+
     while (1){
 
-        printf("\nMaster waiting for resource requests or returns\n");
+        printf("\nMaster waiting for resource request or release\n");
 
-        msgrcverr = msgrcv(resourceMessageQueueID, &resourceMessage, sizeof(resourceMessage), 0, 0); long int mtype;
+        mtype = 0;
+
+        msgrcverr = msgrcv(resourceMessageQueueID, &resourceMessage, sizeof(resourceMessage), 0, 0); 
 
         if (msgrcverr == -1){ //error checking msgrcverror()
 
@@ -162,7 +187,7 @@ int main(int argc, char *argv[]){   //start of main() function
 
             for (int i = 0; i < 20; i++){
 
-                if (strcmp(r_descriptorAddress[i].resourceName, thirdToken) == 0){ //search for the resource in shared memory by resource name
+                if (strcmp(r_descriptorAddress[i].resourceName, thirdToken) == 0){ //search for the resource in shared memory by resource name and update the resource data structure
 
                     int numberOfResource = strtol(secondToken, NULL, 10);   //convert secondToken to int
 
@@ -170,13 +195,35 @@ int main(int argc, char *argv[]){   //start of main() function
 
                     r_descriptorAddress[i].availableResource += numberOfResource;   //add secondToken
 
+                    for (int index = 0;  index < 18; index++){  //traverse the process array for the particular resource to find and remove the returning process from allocation
+                            
+                            if (r_descriptorAddress[i].processIndex[index] == mtype){   //find the process returning the resource
+                                
+                                r_descriptorAddress[i].processAllocation[index] = 0;    //reset its allocation to 0
+
+                                r_descriptorAddress[i].processIndex[index] = 0;         //reset the array location to 0
+
+                                //master found releasing process and update the allocation table;;;print allocation table here
+
+                                break;
+                            }
+
+                            else{
+                                
+                                continue;
+                            }
+
+                    }
+
                     printf("\nAvailable %s is now %d\n", thirdToken, r_descriptorAddress[i].availableResource);
+
+                    break;  //break out of the for loop if the resource is already found
 
                 }
 
             }
 
-            snprintf(logstring, sizeof(logstring), "\nMaster Received a Resource Return from Process %d at %hu:%hu\n", mtype, *osstimeseconds, *osstimenanoseconds);
+            snprintf(logstring, sizeof(logstring), "\nMaster Acknowledged Process %d Released %s %s at %hu:%hu\n", mtype, secondToken, thirdToken, *osstimeseconds+=1, *osstimenanoseconds);
 
             logmsg(logfilename, logstring); //calling logmsg() to write to file
 
@@ -190,6 +237,14 @@ int main(int argc, char *argv[]){   //start of main() function
 
             secondToken = strtok(NULL, " "); //secondToken is the resource name here and firstToken will contain the number of resource
 
+            snprintf(logstring, sizeof(logstring), "\nMaster has detected Process %d requesting %d %s at %hu:%hu\n", mtype, numOfResources, secondToken, *osstimeseconds, *osstimenanoseconds+=5);
+
+            logmsg(logfilename, logstring); //calling logmsg() to write to file
+
+            snprintf(logstring, sizeof(logstring), "\nMaster running deadlock avoidance algorithm at %hu:%hu\n",*osstimeseconds, *osstimenanoseconds+=5);
+
+            logmsg(logfilename, logstring); //calling logmsg() to write to file
+
             printf("\nMaster received request for resource %d %s from Process %d\n", numOfResources, secondToken, mtype);  
 
             for (int i = 0; i < 20; i++){
@@ -197,14 +252,34 @@ int main(int argc, char *argv[]){   //start of main() function
                 if (strcmp(r_descriptorAddress[i].resourceName, secondToken) == 0){ //search for the resource in shared memory by resource name
 
                     printf("\nResource %s found.\n", secondToken);
-                    if (r_descriptorAddress[i].availableResource >= numOfResources){     //if resource is available                      
+
+                    if (r_descriptorAddress[i].availableResource >= numOfResources){     //if resource is available, update the Resource data structure    
+
+                        printf("\nnumber of resources requested is %d\n", numOfResources);
 
                         r_descriptorAddress[i].allocatedResource+=numOfResources;    //increment allocatedResource by number requested
 
-                        r_descriptorAddress[i].availableResource = r_descriptorAddress[i].totalResource - r_descriptorAddress[i].allocatedResource;    //decrement available resource 
+                        r_descriptorAddress[i].availableResource = (r_descriptorAddress[i].totalResource - r_descriptorAddress[i].allocatedResource);    //decrement available resource 
 
-                    strcpy(resourceMessage.msgcontent, "1"); //send 1 to user process to indicate resource was granted
-                    resourceMessage.msgtype = mtype;
+                        for (int index = 0;  index < 18; index++){  //traverse the process array for the particular resource
+                            
+                            if (r_descriptorAddress[i].processIndex[index] != 0)
+                                continue;       //skip the location already with a process ID in it
+
+                            else{
+                                
+                                r_descriptorAddress[i].processIndex[index] = mtype; //store the requesting process' ID in the process array of the resource being requested
+
+                                r_descriptorAddress[i].processAllocation[index] = numOfResources; //store the corresponding number of resource requested
+
+                                break;  //break out of the loop once the process ID has been stored
+
+                            }
+
+                        }
+                        
+                        strcpy(resourceMessage.msgcontent, "1"); //send 1 to user process to indicate resource was granted
+                        resourceMessage.msgtype = mtype;
 
                         msgsnderr = msgsnd(resourceMessageQueueID, &resourceMessage, sizeof(resourceMessage), IPC_NOWAIT);   //send message granted to user process
 
