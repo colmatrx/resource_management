@@ -30,6 +30,7 @@ void logmsg(char *filename, const char *msg){       //this function is for writi
 
 int randomNumber(int lowertimelimit, int uppertimelimit){
 
+    sleep(1);   //sleeping a little ensures the same number is not generated successively
     int randNum = 0;
     srand(time(NULL));          //initilize the rand function
     randNum = (rand() % ((uppertimelimit - lowertimelimit) + 1)) + lowertimelimit; //this logic produces a number between lowertimelit and uppertimelimit

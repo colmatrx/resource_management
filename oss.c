@@ -15,7 +15,10 @@
 #include "config.h"
 
 /*Author Idris Adeleke CS4760 Project 5 - Resource Management*/
-//This is the user_proc application that gets called by the execl command inside runsim's child processes
+
+/* Submitted December 1, 2021*/
+
+//This is the main oss application that randomly creates child processes which in turn exec user_proc application
 
 typedef struct resources{
     
@@ -23,8 +26,8 @@ typedef struct resources{
     int totalResource; //total resource in system
     int allocatedResource;   //currently allocated resource
     int availableResource;  //currently available resource
-    int processIndex[18];   //to track which process is allocated a resource; maximum of 18 processes
-    int processAllocation[18];  //to track how many resource instances a process is allocated
+    long int processIndex[max_number_of_processes];   //to track which process is allocated a resource; maximum of 18 processes
+    int processAllocation[max_number_of_processes];  //to track how many resource instances a process is allocated
 
 } resource; //try an integer array int processTracker[18] to track which process has what resources
 
@@ -38,13 +41,15 @@ int resourceMessageQueueID;  //message queue ID
 
 resource *r_descriptorAddress;  //struct pointer to traverse the shared memory
 
-int processID[18];
+int processID[max_number_of_processes];
 
 void initclock(void);   //function to initialize the two clocks in shared memory
 
 void initResourceTable(void);   //function to initialize and instantiate resources R0 to R19
 
 void printResourceAvailabilityTable(void);  //to print out the number of available resources
+
+void printResourceAllocationTable(void);    //to print out the resource allocation table
 
 void cleanUp(void);
 
@@ -62,7 +67,15 @@ char *logfilename = "logfile.log"; char logstring[4096];
 
 int pid; int randomTime;
 
+int resourceDenied = 0; int resourceReleased = 0; //to track number of resources denied and returned
+
 int main(int argc, char *argv[]){   //start of main() function
+
+    int msgrcverr, msgsnderr; char resourceRequest[15]; char resourceReturnCopy[15]; 
+
+    char *resourceNum, *resourceID; char *firstToken, *secondToken, *thirdToken;
+
+    long int mtype;
 
     signal(SIGINT, siginthandler); //handles Ctrl+C signal inside OSS only     
 
@@ -88,7 +101,7 @@ int main(int argc, char *argv[]){   //start of main() function
 
     printf("\nMaster clock initialized at %hu:%hu\n", *osstimeseconds, *osstimenanoseconds); //print out content of ossclock after initialization
 
-    //testing message queue here
+    //setting up message queue here
 
     resourceMessageQueueID = msgget(message_queue_key, IPC_CREAT|0766); //creates the message queue and gets the queue id
 
@@ -101,7 +114,7 @@ int main(int argc, char *argv[]){   //start of main() function
         exit(1);
     }
 
-    //end of message queue testing
+    //end of message queue setup
 
 
     resourceTableID = shmget(resourceTableKey, (sizeof(resource)*20), IPC_CREAT|0766); //create a shared memory allocation for 20 resources
@@ -116,11 +129,9 @@ int main(int argc, char *argv[]){   //start of main() function
 
     printf("\nMaster Resource Desctiptor Table was successfully initialized. Size of Table is %d bytes\n\n", (sizeof(resource)*20)); //print out content of ossclock after initialization
    
-    for (int count = 0; count < 2; count++){       //randomly create user processes
+    for (int count = 0; count < max_number_of_processes; count++){       //randomly create user processes in this block
 
         pid = fork();
-
-        sleep(3);
 
         if (pid < 0){
                 perror("\nError: Master in main() function. fork() failed!");
@@ -136,25 +147,27 @@ int main(int argc, char *argv[]){   //start of main() function
 
             printf("\nUser Process %d was created\n", getpid());
 
-            execl("./user_proc", "./user_proc", NULL);      //execute user_proc
+            execl("./user_proc", "./user_proc", NULL);      //execute user process
         }
 
         randomTime = randomNumber(1,10);    //generate random number between 1 and 10
 
         *osstimenanoseconds+=randomTime;    //increment oss nanosecond by randomTime
+
+        printf("\nMaster created User Process %d at %hu:%hu\n", processID[count], *osstimeseconds, *osstimenanoseconds);
     }
     
-    int msgrcverr, msgsnderr; char resourceRequest[15]; char resourceReturnCopy[15]; 
-
-    char *resourceNum, *resourceID; char *firstToken, *secondToken, *thirdToken;
-
-    long int mtype;
+    
 
     while (1){
 
         printf("\nMaster waiting for resource request or release\n");
 
         mtype = 0;
+
+        snprintf(logstring, sizeof(logstring), "\nMaster listening for resource request/release at %hu:%hu\n", *osstimeseconds+=1, *osstimenanoseconds);
+
+        logmsg(logfilename, logstring); //calling logmsg() to write to file
 
         msgrcverr = msgrcv(resourceMessageQueueID, &resourceMessage, sizeof(resourceMessage), 0, 0); 
 
@@ -195,15 +208,13 @@ int main(int argc, char *argv[]){   //start of main() function
 
                     r_descriptorAddress[i].availableResource += numberOfResource;   //add secondToken
 
-                    for (int index = 0;  index < 18; index++){  //traverse the process array for the particular resource to find and remove the returning process from allocation
+                    for (int index = 0;  index < max_number_of_processes; index++){  //traverse the process array for the particular resource to find and remove the returning process from allocation
                             
                             if (r_descriptorAddress[i].processIndex[index] == mtype){   //find the process returning the resource
                                 
                                 r_descriptorAddress[i].processAllocation[index] = 0;    //reset its allocation to 0
 
                                 r_descriptorAddress[i].processIndex[index] = 0;         //reset the array location to 0
-
-                                //master found releasing process and update the allocation table;;;print allocation table here
 
                                 break;
                             }
@@ -223,9 +234,13 @@ int main(int argc, char *argv[]){   //start of main() function
 
             }
 
+            resourceReleased++; //count the number of returns
+
             snprintf(logstring, sizeof(logstring), "\nMaster Acknowledged Process %d Released %s %s at %hu:%hu\n", mtype, secondToken, thirdToken, *osstimeseconds+=1, *osstimenanoseconds);
 
             logmsg(logfilename, logstring); //calling logmsg() to write to file
+
+            printResourceAllocationTable(); //display allocation table on release of resource
 
             printResourceAvailabilityTable();   //display available resources
 
@@ -261,9 +276,9 @@ int main(int argc, char *argv[]){   //start of main() function
 
                         r_descriptorAddress[i].availableResource = (r_descriptorAddress[i].totalResource - r_descriptorAddress[i].allocatedResource);    //decrement available resource 
 
-                        for (int index = 0;  index < 18; index++){  //traverse the process array for the particular resource
+                        for (int index = 0;  index < max_number_of_processes; index++){  //traverse the process array for the particular resource
                             
-                            if (r_descriptorAddress[i].processIndex[index] != 0)
+                            if (r_descriptorAddress[i].processIndex[index] > 0)
                                 continue;       //skip the location already with a process ID in it
 
                             else{
@@ -283,13 +298,15 @@ int main(int argc, char *argv[]){   //start of main() function
 
                         msgsnderr = msgsnd(resourceMessageQueueID, &resourceMessage, sizeof(resourceMessage), IPC_NOWAIT);   //send message granted to user process
 
-                        sleep(3);
+                        sleep(2);
 
                         printf("\nResource available; Master sent message type %d and message content %s to user process\n", mtype, "1");
 
                         snprintf(logstring, sizeof(logstring), "\nMaster granted %d %s to Process %d at %hu:%hu\n\n", numOfResources, secondToken, mtype, *osstimeseconds, *osstimenanoseconds);
 
                         logmsg(logfilename, logstring); //calling logmsg() to write to file
+
+                        printResourceAllocationTable(); //log allocation table on granting of resource
 
                         printResourceAvailabilityTable();
                     }
@@ -312,6 +329,8 @@ int main(int argc, char *argv[]){   //start of main() function
 
                             kill(mtype, SIGKILL);
 
+                            resourceDenied++;   //count the number of resource denials
+
                             snprintf(logstring, sizeof(logstring), "\nMaster denied %d %s to Process %d at %hu:%hu to avoid deadlock\n", numOfResources, secondToken, mtype, *osstimeseconds, *osstimenanoseconds);
 
                             logmsg(logfilename, logstring); //calling logmsg() to write to file
@@ -328,10 +347,17 @@ int main(int argc, char *argv[]){   //start of main() function
             }
         }
 
-        sleep(5);
+        sleep(3);
+
+        if (max_number_of_processes == (resourceDenied + resourceReleased)) //if all processes have either been denied or have released their resources, break out of listening for request
+            break;
     }
 
     cleanUp();      //call cleanup before exiting main() to free up used resources
+
+    snprintf(logstring, sizeof(logstring), "\nMaster: No more requests. Master completed execution at %hu:%hu\n", ossofflinesecondclock+=1, ossofflinenanosecondclock+=05);
+
+    logmsg(logfilename, logstring); //calling logmsg() to write to file
 
     return 0;
 
@@ -364,7 +390,7 @@ void initclock(){ //initializes the seconds and nanoseconds parts of the oss
 void initResourceTable(void){
 
     char name[3]; 
-    //r_descriptorAddress;  //struct pointer to traverse the shared memory
+    
     int randomNumberResult;
 
     r_descriptorAddress  = shmat(resourceTableID, NULL, 0); //shmat returns the address of the shared memory, receive the address into a structure pointer variable
@@ -408,7 +434,7 @@ void initResourceTable(void){
 
     printf("\nResource Table after Initialization\n\n");
 
-   for (int i = 0; i <= 20; i++){       
+   for (int i = 0; i <= 20; i++){       //loop to print the resource names as headers
 
        if (i == 0){
 
@@ -430,7 +456,7 @@ void initResourceTable(void){
     }
 
 
-    for (int i = 0; i < 20; i++){
+    for (int i = 0; i < 20; i++){       //loop to print the corresponding values under each resource header
 
         char resourceToString[4];
         sprintf(resourceToString, "%d", r_descriptorAddress[i].totalResource); //converts int to string
@@ -459,7 +485,9 @@ void initResourceTable(void){
 
 void printResourceAvailabilityTable(void){  //prints the number of available resources when called
 
-    snprintf(logstring, sizeof(logstring), "\nMaster Generating Resource Availability Table at %hu:%hu\n\n", *osstimeseconds, *osstimenanoseconds+=55);
+    strcpy(logstring, "");
+
+    snprintf(logstring, sizeof(logstring), "\nMaster Updating Resource Availability Table at %hu:%hu\n\n", *osstimeseconds, *osstimenanoseconds+=55);
 
     logmsg(logfilename, logstring); //calling logmsg() to write to file
 
@@ -506,19 +534,89 @@ void printResourceAvailabilityTable(void){  //prints the number of available res
 
     logmsg(logfilename, logstring);
 
-    snprintf(logstring, sizeof(logstring), "\n\nMaster printed Resource Availability Table at %hu:%hu\n", *osstimeseconds, *osstimenanoseconds+=30);
+    snprintf(logstring, sizeof(logstring), "\n\nMaster Updated Resource Availability Table at %hu:%hu\n", *osstimeseconds, *osstimenanoseconds+=30);
     
     logmsg(logfilename, logstring);
 
-}
+}   //end of printResourceAvailabilityTable()
+
+
+void printResourceAllocationTable(void){    //function to print the resource allocation table
+
+    strcpy(logstring, "");
+
+    snprintf(logstring, sizeof(logstring), "\nMaster Updating Resource Allocation Table at %hu:%hu\n\n", *osstimeseconds, *osstimenanoseconds+=55);
+
+    logmsg(logfilename, logstring); //calling logmsg() to write to file
+
+    printf("%s", logstring);
+
+    char indexToString[6]; char allocationToString[4];  //for conversions to strings
+
+    for (int i = 0; i < 20; i++){    
+        
+        strcat(logstring, r_descriptorAddress[i].resourceName);
+        strcat(logstring, " ->");
+
+        for (int index = 0; index < max_number_of_processes; index++){
+
+                if (r_descriptorAddress[i].processIndex[index] > 0){    //if there a process ID in this location
+
+                    sprintf(indexToString, "%d", r_descriptorAddress[i].processIndex[index]); //converts int to string
+
+                    sprintf(allocationToString, "%d", r_descriptorAddress[i].processAllocation[index]); //converts int to string
+
+                    strcat(logstring, "\t"); strcat(logstring, "PID "); strcat(logstring, indexToString);
+
+                    strcat(logstring, "("); strcat(logstring, allocationToString); strcat(logstring, ")"); //to form example R0 -> PID 1445(5)
+
+                }
+        }
+
+        strcat(logstring, "\n");
+    }
+
+    logmsg(logfilename, logstring);
+
+    printf("%s", logstring);
+
+    snprintf(logstring, sizeof(logstring), "\nMaster Updated Resource Allocation Table at %hu:%hu\n", *osstimeseconds, *osstimenanoseconds+=30);
+    
+    logmsg(logfilename, logstring);
+
+    printf("%s", logstring);
+
+}   //end of printResourceAllocationTable()
 
 
 void cleanUp(void){ //frees up used resources including shared memory
+
+    char pidToString[6];
 
     printf("\nCleaning up used resources....\n");
 
     snprintf(logstring, sizeof(logstring), "\nMaster cleaning up resources at %hu:%hu\n", *osstimeseconds, *osstimenanoseconds+=5);
     logmsg(logfilename, logstring);
+
+    // first kill all user processes that are still holding resources
+
+    snprintf(logstring, sizeof(logstring), "\nMaster stopping all pending user processes at %hu:%hu\n", resourceMessageQueueID, ossofflinesecondclock, ossofflinenanosecondclock+=15);
+    logmsg(logfilename, logstring);
+
+        for (int index = 0; index < max_number_of_processes; index++){
+
+                if (processID[index] > 0){    //if there a process ID in this location
+
+                    sprintf(pidToString, "%d", processID[index]);   //convert process id to string
+
+                    printf("\nStopping user process %d\n", processID[index]);
+
+                    snprintf(logstring, sizeof(logstring), "\nMaster stopping Process %s at %hu:%hu\n", pidToString, ossofflinesecondclock, ossofflinenanosecondclock+=15);
+                    logmsg(logfilename, logstring);
+
+                    kill(processID[index], SIGKILL);
+                }
+        }
 
     //Now detach and delete shared memories
 
@@ -576,25 +674,13 @@ void cleanUp(void){ //frees up used resources including shared memory
 
 }   //end of cleanUP()
 
+
 void siginthandler(int sigint){
 
         printf("\nMaster: Ctrl+C interrupt received. In siginthandler() handler. Aborting Processes..\n");
 
         snprintf(logstring, sizeof(logstring), "\nMaster in Signal Handler; Ctrl+C interrupt received at %hu:%hu\n", *osstimeseconds+=1, *osstimenanoseconds);
         logmsg(logfilename, logstring);
-
-        /*snprintf(logstring, sizeof(logstring), "\nOSS: Error!: Ctrl+C interrupt was received at time %d seconds and %d nanoseconds. Aborting User Processes...",*osstimeseconds, *osstimenanoseconds);
-        logmsg(logfilename, logstring);
-
-        for (int i = 0; i < 18; i++){       //traverse the process table to locate and kill user processes
-            if (((processtableaddress+i)->processid) > 0){
-
-                kill((processtableaddress+i)->processid, SIGKILL); //kills any process with pid greater than 0
-                snprintf(logstring, sizeof(logstring), "\nOSS: User Process %d terminated", (processtableaddress+i)->processid);
-                logmsg(logfilename, logstring);
-
-            }
-        }*/
 
         cleanUp();  //calling cleanUp() before terminating oss
 
@@ -613,23 +699,6 @@ void timeouthandler(int sig){   //this function is called if the program times o
 
     snprintf(logstring, sizeof(logstring), "\nMaster timed out at %hu:%hu", *osstimeseconds+=1, *osstimenanoseconds+=5);
     logmsg(logfilename, logstring);
-
-   /* *osstimeseconds = *osstimeseconds + 180; //timeout happens after 3 minutes
-
-    snprintf(logstring, sizeof(logstring), "\nOSS: System Timeout at %d seconds and %d nanoseconds. In Timeout Signal Handler. Aborting User Processes and Cleaning up resources...", *osstimeseconds, *osstimenanoseconds);
-    logmsg(logfilename, logstring);
-
-    for (int i = 0; i < 18; i++){       //traverse the process table to locate and kill user processes
-            if (((processtableaddress+i)->processid) > 0){
-
-                kill((processtableaddress+i)->processid, SIGKILL); //kills any process with pid greater than 0
-                snprintf(logstring, sizeof(logstring), "\nOSS: User Process %d terminated", (processtableaddress+i)->processid);
-                logmsg(logfilename, logstring);
-
-            }
-    }*/
-
-   // *osstimeseconds = *osstimeseconds + 1; *osstimenanoseconds = *osstimenanoseconds + 15; //increment clock before calling cleanup()
 
     cleanUp(); //call cleanup to free up used resources
     snprintf(logstring, sizeof(logstring), "\nMaster terminating at %hu:%hu", ossofflinesecondclock+=1, ossofflinenanosecondclock+=5);

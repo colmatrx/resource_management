@@ -19,9 +19,11 @@ struct msgqueue{
 
 int resourceMessageID;
 
-
 /*Author Idris Adeleke CS4760 Project 5 - Resource Management*/
-//This is the user_proc application that gets called by the execl command inside runsim's child processes
+
+/* Submitted December 1, 2021*/
+
+//This is the user_proc application that gets called by the execl command inside oss child processes
 
 int main(int argc, char *argv[]){
 
@@ -31,7 +33,7 @@ int main(int argc, char *argv[]){
     char rand_name[3];  //to store converted rand as string
     char resourceToken[4] = "R"; char returnString[15] = "return";
     //long int userpid = getpid(); 
-    char *messageFromMaster;    //to store message content received from MAster
+    char *messageFromMaster;    //to store message content received from Master
     long int pidFromMaster;
     
     printf("\nExecuting User Process %d \n", getpid());
@@ -60,8 +62,6 @@ int main(int argc, char *argv[]){
 
     strcat(user_rname, rand_name);    //append randomResourceID to user_rname to construct exmaple '3 R12'
 
-    //strcat(resourceToken, user_rname); //create a copy of resource requested
-
     strcpy(resourceMessageChild.msgcontent, user_rname);    //copies user_rname into message content
 
     resourceMessageChild.msgtype = getpid();    //initialize msgtype with user process' PID
@@ -77,29 +77,55 @@ int main(int argc, char *argv[]){
 
     printf("\nUser Process %d is requesting resource %s from Master\n", getpid(), user_rname);
 
-    msgrcverror = msgrcv(resourceMessageID, &resourceMessageChild, sizeof(resourceMessageChild), getpid(), 0); //receive message back from master
+    while(1){
 
-    if (msgrcverror == -1){ //error checking msgrcverror()
+        sleep(2);
 
-        perror("\nError: In user_proc(). msgrcv() failed!");
+        msgrcverror = msgrcv(resourceMessageID, &resourceMessageChild, sizeof(resourceMessageChild), getpid(), 0); //receive message back from master
 
-        exit(1);
-    }
+        if (msgrcverror == -1){ //error checking msgrcverror()
 
-    if (strcmp(resourceMessageChild.msgcontent, "-1") == 0){    //if resource not granted
+            perror("\nError: In user_proc(). msgrcv() failed!");
 
-        printf("\nResource not granted by Master...User Process %d exiting\n", getpid());
+            exit(1);
+        }
 
-        exit(1);
-    }        
+        if (strcmp(resourceMessageChild.msgcontent, "-1") == 0){    //if resource not granted
+
+            printf("\nResource not granted by Master...User Process %d exiting\n", getpid());
+
+            exit(1);
+        } 
+
+        else if (strcmp(resourceMessageChild.msgcontent, "1") == 0)   //if resource is granted
+            break;      //break out of the loop if resource i granted
+
+        else if (strcmp(resourceMessageChild.msgcontent, user_rname) == 0){ //if you read your own message back before master could read it, reconstruct it and resend it to the queue
+
+            resourceMessageChild.msgtype = getpid();
+
+            strcpy(resourceMessageChild.msgcontent, user_rname);    //copies user_rname into message content
+
+            msgsnderror = msgsnd(resourceMessageID, &resourceMessageChild, sizeof(resourceMessageChild), 0);
+
+            if (msgsnderror == -1){ //error checking msgsnd()
+
+                perror("\nError: In user_proc(). msgsnd() failed!");
+
+                exit(1);
+            }
+
+            continue;
+        }
+    }   
 
     printf("\nResource %s granted by Master to Process %d\n", user_rname, getpid());
 
-    while ((newrand = randomNumber(0,19)) != randomResourceNum){  
+    while ((newrand = randomNumber(0,19)) != randomResourceNum){  //hold on to the resource until you generate the same number you generated to request it
 
         printf("\nProcess %d is still using resource %s\n", resourceMessageChild.msgtype, user_rname);
 
-        sleep(3);
+        sleep(1);
     }  
 
     printf("\nProcess %d releasing resource %s\n", resourceMessageChild.msgtype, user_rname);
