@@ -127,6 +127,14 @@ int main(int argc, char *argv[]){   //start of main() function
 
     printf("\nMaster Resource Desctiptor Table was successfully initialized. Size of Table is %d bytes\n\n", (sizeof(resource)*20)); //print out content of ossclock after initialization
    
+    strcpy(logstring, "");
+
+    snprintf(logstring, sizeof(logstring), "\nMaster randomly generating user processes at %hu:%hu ......\n", *osstimeseconds+=1, *osstimenanoseconds);
+
+    logmsg(logfilename, logstring); //calling logmsg() to write to file
+
+    printf("%s", logstring);
+    
     for (int count = 0; count < max_number_of_processes; count++){       //randomly create user processes in this block
 
         pid = fork();
@@ -602,23 +610,29 @@ void cleanUp(void){ //frees up used resources including shared memory
 
     // first kill all user processes that are still holding resources
 
-    snprintf(logstring, sizeof(logstring), "\nMaster stopping all pending user processes at %hu:%hu\n", resourceMessageQueueID, *osstimeseconds, *osstimenanoseconds+=2);
+    strcpy(logstring, "");
+    snprintf(logstring, sizeof(logstring), "\nMaster stopping all pending user processes at %hu:%hu\n", *osstimeseconds, *osstimenanoseconds+=2);
     logmsg(logfilename, logstring);
+    printf("%s", logstring);
 
         for (int index = 0; index < max_number_of_processes; index++){
 
                 if (processID[index] > 0){    //if there a process ID in this location
 
-                    sprintf(pidToString, "%d", processID[index]);   //convert process id to string
+                    //sprintf(pidToString, "%d", processID[index]);   //convert process id to string
 
-                    printf("\nStopping user process %d\n", processID[index]);
+                    //printf("\nStopping user process %d\n", processID[index]);
 
-                    snprintf(logstring, sizeof(logstring), "\nMaster stopping Process %s at %hu:%hu\n", pidToString, *osstimeseconds, *osstimenanoseconds+=1);
-                    logmsg(logfilename, logstring);
+                    //snprintf(logstring, sizeof(logstring), "\nMaster stopping Process %s at %hu:%hu\n", pidToString, *osstimeseconds, *osstimenanoseconds+=1);
+                    //logmsg(logfilename, logstring);
 
                     kill(processID[index], SIGKILL);
                 }
         }
+    strcpy(logstring, "");
+    snprintf(logstring, sizeof(logstring), "\nMaster stopped all pending user processes at %hu:%hu\n", *osstimeseconds+=2, *osstimenanoseconds+=10);
+    logmsg(logfilename, logstring);
+    printf("%s", logstring);
 
     //Now detach and delete shared memories
 

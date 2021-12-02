@@ -48,7 +48,7 @@ int main(int argc, char *argv[]){
 
     sleep(1); //sleep a bit to ensure a random numbere different from the first random number
 
-    randomResourceNum = randomNumber(1, 19); // this is the number of resources that will be requested
+    randomResourceNum = randomNumber(1, 20); // this is the number of resources that will be requested
 
     sprintf(rand_name, "%d", randomResourceNum); //converts randomResourceNum to string and store it in rand_name
 
