@@ -6427,3 +6427,1693 @@ Master Clock Shared Memory ID 32819 has been detached and deleted at 6:232
 Master removed Messaqe Queue ID 25 at 6:247
 
 Master terminating at 7:252
+Master Initializing Resource Descriptor Table at 0:55
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+9	3	3	4	6	5	1	4	8	1	8	7	1	6	8	6	6	7	10	6
+
+Master completed Resource Descriptor Initialization at 2:85
+
+Master listening for resource request/release at 3:192
+
+Master has detected Process 14072 requesting 15 R8 at 3:197
+
+Master running deadlock avoidance algorithm at 3:202
+
+Master denied 15 R8 to Process 14072 at 3:202 to avoid deadlock
+
+Master Updating Resource Availability Table at 3:257
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+9	3	3	4	6	5	1	4	8	1	8	7	1	6	8	6	6	7	10	6
+
+Master Updated Resource Availability Table at 3:287
+
+Master listening for resource request/release at 4:287
+
+Master has detected Process 14064 requesting 1 R5 at 4:292
+
+Master running deadlock avoidance algorithm at 4:297
+
+Master granted 1 R5 to Process 14064 at 4:297
+
+
+Master Updating Resource Allocation Table at 4:352
+
+
+Master Updated Resource Allocation Table at 4:382
+
+Master Updating Resource Availability Table at 4:437
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+9	3	3	4	6	4	1	4	8	1	8	7	1	6	8	6	6	7	10	6
+
+Master Updated Resource Availability Table at 4:467
+
+Master listening for resource request/release at 5:467
+
+Master has detected Process 14077 requesting 6 R6 at 5:472
+
+Master running deadlock avoidance algorithm at 5:477
+
+Master denied 6 R6 to Process 14077 at 5:477 to avoid deadlock
+
+Master Updating Resource Availability Table at 5:532
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+9	3	3	4	6	4	1	4	8	1	8	7	1	6	8	6	6	7	10	6
+
+Master Updated Resource Availability Table at 5:562
+
+Master listening for resource request/release at 6:562
+
+Master has detected Process 14062 requesting 14 R15 at 6:567
+
+Master running deadlock avoidance algorithm at 6:572
+
+Master denied 14 R15 to Process 14062 at 6:572 to avoid deadlock
+
+Master Updating Resource Availability Table at 6:627
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+9	3	3	4	6	4	1	4	8	1	8	7	1	6	8	6	6	7	10	6
+
+Master Updated Resource Availability Table at 6:657
+
+Master listening for resource request/release at 7:657
+
+Master has detected Process 14070 requesting 2 R12 at 7:662
+
+Master running deadlock avoidance algorithm at 7:667
+
+Master denied 2 R12 to Process 14070 at 7:667 to avoid deadlock
+
+Master Updating Resource Availability Table at 7:722
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+9	3	3	4	6	4	1	4	8	1	8	7	1	6	8	6	6	7	10	6
+
+Master Updated Resource Availability Table at 7:752
+
+Master listening for resource request/release at 8:752
+
+Master has detected Process 14066 requesting 2 R16 at 8:757
+
+Master running deadlock avoidance algorithm at 8:762
+
+Master granted 2 R16 to Process 14066 at 8:762
+
+
+Master Updating Resource Allocation Table at 8:817
+
+
+Master Updated Resource Allocation Table at 8:847
+
+Master Updating Resource Availability Table at 8:902
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+9	3	3	4	6	4	1	4	8	1	8	7	1	6	8	6	4	7	10	6
+
+Master Updated Resource Availability Table at 8:932
+
+Master listening for resource request/release at 9:932
+
+Master has detected Process 14074 requesting 19 R7 at 9:937
+
+Master running deadlock avoidance algorithm at 9:942
+
+Master denied 19 R7 to Process 14074 at 9:942 to avoid deadlock
+
+Master Updating Resource Availability Table at 9:997
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+9	3	3	4	6	4	1	4	8	1	8	7	1	6	8	6	4	7	10	6
+
+Master Updated Resource Availability Table at 9:1027
+
+Master listening for resource request/release at 10:1027
+
+Master has detected Process 14068 requesting 14 R13 at 10:1032
+
+Master running deadlock avoidance algorithm at 10:1037
+
+Master denied 14 R13 to Process 14068 at 10:1037 to avoid deadlock
+
+Master Updating Resource Availability Table at 10:1092
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+9	3	3	4	6	4	1	4	8	1	8	7	1	6	8	6	4	7	10	6
+
+Master Updated Resource Availability Table at 10:1122
+
+Master listening for resource request/release at 11:1122
+
+Master Acknowledged Process 14066 Released 2 R16 at 12:1122
+
+Master Updating Resource Allocation Table at 12:1177
+
+
+Master Updated Resource Allocation Table at 12:1207
+
+Master Updating Resource Availability Table at 12:1262
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+9	3	3	4	6	4	1	4	8	1	8	7	1	6	8	6	6	7	10	6
+
+Master Updated Resource Availability Table at 12:1292
+
+Master listening for resource request/release at 13:1292
+
+Master has detected Process 14082 requesting 6 R9 at 13:1297
+
+Master running deadlock avoidance algorithm at 13:1302
+
+Master denied 6 R9 to Process 14082 at 13:1302 to avoid deadlock
+
+Master Updating Resource Availability Table at 13:1357
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+9	3	3	4	6	4	1	4	8	1	8	7	1	6	8	6	6	7	10	6
+
+Master Updated Resource Availability Table at 13:1387
+
+Master listening for resource request/release at 14:1387
+
+Master Acknowledged Process 14064 Released 1 R5 at 15:1387
+
+Master Updating Resource Allocation Table at 15:1442
+
+
+Master Updated Resource Allocation Table at 15:1472
+
+Master Updating Resource Availability Table at 15:1527
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+9	3	3	4	6	5	1	4	8	1	8	7	1	6	8	6	6	7	10	6
+
+Master Updated Resource Availability Table at 15:1557
+
+Master listening for resource request/release at 16:1557
+
+Master has detected Process 14065 requesting 1 R0 at 16:1562
+
+Master running deadlock avoidance algorithm at 16:1567
+
+Master granted 1 R0 to Process 14065 at 16:1567
+
+
+Master Updating Resource Allocation Table at 16:1622
+
+
+Master Updated Resource Allocation Table at 16:1652
+
+Master Updating Resource Availability Table at 16:1707
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+8	3	3	4	6	5	1	4	8	1	8	7	1	6	8	6	6	7	10	6
+
+Master Updated Resource Availability Table at 16:1737
+
+Master listening for resource request/release at 17:1737
+
+Master has detected Process 14076 requesting 3 R14 at 17:1742
+
+Master running deadlock avoidance algorithm at 17:1747
+
+Master granted 3 R14 to Process 14076 at 17:1747
+
+
+Master Updating Resource Allocation Table at 17:1802
+
+
+Master Updated Resource Allocation Table at 17:1832
+
+Master Updating Resource Availability Table at 17:1887
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+8	3	3	4	6	5	1	4	8	1	8	7	1	6	5	6	6	7	10	6
+
+Master Updated Resource Availability Table at 17:1917
+
+Master listening for resource request/release at 18:1917
+
+Master Acknowledged Process 14076 Released 3 R14 at 19:1917
+
+Master Updating Resource Allocation Table at 19:1972
+
+
+Master Updated Resource Allocation Table at 19:2002
+
+Master Updating Resource Availability Table at 19:2057
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+8	3	3	4	6	5	1	4	8	1	8	7	1	6	8	6	6	7	10	6
+
+Master Updated Resource Availability Table at 19:2087
+
+Master listening for resource request/release at 20:2087
+
+Master has detected Process 14067 requesting 3 R5 at 20:2092
+
+Master running deadlock avoidance algorithm at 20:2097
+
+Master granted 3 R5 to Process 14067 at 20:2097
+
+
+Master Updating Resource Allocation Table at 20:2152
+
+
+Master Updated Resource Allocation Table at 20:2182
+
+Master Updating Resource Availability Table at 20:2237
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+8	3	3	4	6	2	1	4	8	1	8	7	1	6	8	6	6	7	10	6
+
+Master Updated Resource Availability Table at 20:2267
+
+Master listening for resource request/release at 21:2267
+
+Master Acknowledged Process 14065 Released 1 R0 at 22:2267
+
+Master Updating Resource Allocation Table at 22:2322
+
+
+Master Updated Resource Allocation Table at 22:2352
+
+Master Updating Resource Availability Table at 22:2407
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+9	3	3	4	6	2	1	4	8	1	8	7	1	6	8	6	6	7	10	6
+
+Master Updated Resource Availability Table at 22:2437
+
+Master listening for resource request/release at 23:2437
+
+Master has detected Process 14069 requesting 2 R13 at 23:2442
+
+Master running deadlock avoidance algorithm at 23:2447
+
+Master granted 2 R13 to Process 14069 at 23:2447
+
+
+Master Updating Resource Allocation Table at 23:2502
+
+
+Master Updated Resource Allocation Table at 23:2532
+
+Master Updating Resource Availability Table at 23:2587
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+9	3	3	4	6	2	1	4	8	1	8	7	1	4	8	6	6	7	10	6
+
+Master Updated Resource Availability Table at 23:2617
+
+Master listening for resource request/release at 24:2617
+
+Master has detected Process 14060 requesting 4 R5 at 24:2622
+
+Master running deadlock avoidance algorithm at 24:2627
+
+Master denied 4 R5 to Process 14060 at 24:2627 to avoid deadlock
+
+Master Updating Resource Availability Table at 24:2682
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+9	3	3	4	6	2	1	4	8	1	8	7	1	4	8	6	6	7	10	6
+
+Master Updated Resource Availability Table at 24:2712
+
+Master listening for resource request/release at 25:2712
+
+Master Acknowledged Process 14067 Released 3 R5 at 26:2712
+
+Master Updating Resource Allocation Table at 26:2767
+
+
+Master Updated Resource Allocation Table at 26:2797
+
+Master Updating Resource Availability Table at 26:2852
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+9	3	3	4	6	5	1	4	8	1	8	7	1	4	8	6	6	7	10	6
+
+Master Updated Resource Availability Table at 26:2882
+
+Master listening for resource request/release at 27:2882
+
+Master has detected Process 14063 requesting 18 R5 at 27:2887
+
+Master running deadlock avoidance algorithm at 27:2892
+
+Master denied 18 R5 to Process 14063 at 27:2892 to avoid deadlock
+
+Master Updating Resource Availability Table at 27:2947
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+9	3	3	4	6	5	1	4	8	1	8	7	1	4	8	6	6	7	10	6
+
+Master Updated Resource Availability Table at 27:2977
+
+Master listening for resource request/release at 28:2977
+
+Master has detected Process 14075 requesting 3 R10 at 28:2982
+
+Master running deadlock avoidance algorithm at 28:2987
+
+Master granted 3 R10 to Process 14075 at 28:2987
+
+
+Master Updating Resource Allocation Table at 28:3042
+
+
+Master Updated Resource Allocation Table at 28:3072
+
+Master Updating Resource Availability Table at 28:3127
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+9	3	3	4	6	5	1	4	8	1	5	7	1	4	8	6	6	7	10	6
+
+Master Updated Resource Availability Table at 28:3157
+
+Master listening for resource request/release at 29:3157
+
+Master has detected Process 14071 requesting 11 R18 at 29:3162
+
+Master running deadlock avoidance algorithm at 29:3167
+
+Master denied 11 R18 to Process 14071 at 29:3167 to avoid deadlock
+
+Master Updating Resource Availability Table at 29:3222
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+9	3	3	4	6	5	1	4	8	1	5	7	1	4	8	6	6	7	10	6
+
+Master Updated Resource Availability Table at 29:3252
+
+Master listening for resource request/release at 30:3252
+
+Master Acknowledged Process 14069 Released 2 R13 at 31:3252
+
+Master Updating Resource Allocation Table at 31:3307
+
+
+Master Updated Resource Allocation Table at 31:3337
+
+Master Updating Resource Availability Table at 31:3392
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+9	3	3	4	6	5	1	4	8	1	5	7	1	6	8	6	6	7	10	6
+
+Master Updated Resource Availability Table at 31:3422
+
+Master listening for resource request/release at 32:3422
+
+Master has detected Process 14073 requesting 11 R6 at 32:3427
+
+Master running deadlock avoidance algorithm at 32:3432
+
+Master denied 11 R6 to Process 14073 at 32:3432 to avoid deadlock
+
+Master Updating Resource Availability Table at 32:3487
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+9	3	3	4	6	5	1	4	8	1	5	7	1	6	8	6	6	7	10	6
+
+Master Updated Resource Availability Table at 32:3517
+
+Master listening for resource request/release at 33:3517
+
+Master timed out at 34:3522
+Master cleaning up resources at 34:3527
+
+Master stopping all pending user processes at 26:0
+
+Master stopping Process 14060 at 0:30
+
+Master stopping Process 14062 at 0:45
+
+Master stopping Process 14063 at 0:60
+
+Master stopping Process 14064 at 0:75
+
+Master stopping Process 14065 at 0:90
+
+Master stopping Process 14066 at 0:105
+
+Master stopping Process 14067 at 0:120
+
+Master stopping Process 14068 at 0:135
+
+Master stopping Process 14069 at 0:150
+
+Master stopping Process 14070 at 0:165
+
+Master stopping Process 14071 at 0:180
+
+Master stopping Process 14072 at 0:195
+
+Master stopping Process 14073 at 0:210
+
+Master stopping Process 14074 at 0:225
+
+Master stopping Process 14075 at 0:240
+
+Master stopping Process 14076 at 0:255
+
+Master stopping Process 14077 at 0:270
+
+Master stopping Process 14082 at 0:285
+
+Master Resource Descriptor Table's Shared Memory ID 62 has been detached and deleted at  35:3542
+
+Master Clock Shared Memory ID 57 has been detached and deleted at 36:3567
+
+Master removed Messaqe Queue ID 26 at 36:3582
+
+Master terminating at 37:3587
+Master Initializing Resource Descriptor Table at 0:55
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	1	10	8	9	5	7	1	8	9	3	1	8	7	5	9	3	4	5	10
+
+Master completed Resource Descriptor Initialization at 2:85
+
+Master listening for resource request/release at 3:211
+
+Master has detected Process 14263 requesting 5 R15 at 3:216
+
+Master running deadlock avoidance algorithm at 3:221
+
+Master granted 5 R15 to Process 14263 at 3:221
+
+
+Master Updating Resource Allocation Table at 3:276
+
+R0 ->
+R1 ->
+R2 ->
+R3 ->
+R4 ->
+R5 ->
+R6 ->
+R7 ->
+R8 ->
+R9 ->
+R10 ->
+R11 ->
+R12 ->
+R13 ->
+R14 ->
+R15 ->	PID 14263(5)
+R16 ->
+R17 ->
+R18 ->
+R19 ->
+
+Master Updated Resource Allocation Table at 3:306
+
+Master Updating Resource Availability Table at 3:361
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	1	10	8	9	5	7	1	8	9	3	1	8	7	5	4	3	4	5	10
+
+Master Updated Resource Availability Table at 3:391
+
+Master listening for resource request/release at 4:391
+
+Master has detected Process 14264 requesting 12 R0 at 4:396
+
+Master running deadlock avoidance algorithm at 4:401
+
+Master denied 12 R0 to Process 14264 at 4:401 to avoid deadlock
+
+Master Updating Resource Availability Table at 4:456
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	1	10	8	9	5	7	1	8	9	3	1	8	7	5	4	3	4	5	10
+
+Master Updated Resource Availability Table at 4:486
+
+Master listening for resource request/release at 5:486
+
+Master has detected Process 14262 requesting 8 R11 at 5:491
+
+Master running deadlock avoidance algorithm at 5:496
+
+Master denied 8 R11 to Process 14262 at 5:496 to avoid deadlock
+
+Master Updating Resource Availability Table at 5:551
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	1	10	8	9	5	7	1	8	9	3	1	8	7	5	4	3	4	5	10
+
+Master Updated Resource Availability Table at 5:581
+
+Master listening for resource request/release at 6:581
+
+Master has detected Process 14256 requesting 12 R19 at 6:586
+
+Master running deadlock avoidance algorithm at 6:591
+
+Master denied 12 R19 to Process 14256 at 6:591 to avoid deadlock
+
+Master Updating Resource Availability Table at 6:646
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	1	10	8	9	5	7	1	8	9	3	1	8	7	5	4	3	4	5	10
+
+Master Updated Resource Availability Table at 6:676
+
+Master listening for resource request/release at 7:676
+
+Master has detected Process 14258 requesting 5 R18 at 7:681
+
+Master running deadlock avoidance algorithm at 7:686
+
+Master granted 5 R18 to Process 14258 at 7:686
+
+
+Master Updating Resource Allocation Table at 7:741
+
+R0 ->
+R1 ->
+R2 ->
+R3 ->
+R4 ->
+R5 ->
+R6 ->
+R7 ->
+R8 ->
+R9 ->
+R10 ->
+R11 ->
+R12 ->
+R13 ->
+R14 ->
+R15 ->	PID 14263(5)
+R16 ->
+R17 ->
+R18 ->	PID 14258(5)
+R19 ->
+
+Master Updated Resource Allocation Table at 7:771
+
+Master Updating Resource Availability Table at 7:826
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	1	10	8	9	5	7	1	8	9	3	1	8	7	5	4	3	4	0	10
+
+Master Updated Resource Availability Table at 7:856
+
+Master listening for resource request/release at 8:856
+
+Master has detected Process 14254 requesting 6 R12 at 8:861
+
+Master running deadlock avoidance algorithm at 8:866
+
+Master granted 6 R12 to Process 14254 at 8:866
+
+
+Master Updating Resource Allocation Table at 8:921
+
+R0 ->
+R1 ->
+R2 ->
+R3 ->
+R4 ->
+R5 ->
+R6 ->
+R7 ->
+R8 ->
+R9 ->
+R10 ->
+R11 ->
+R12 ->	PID 14254(6)
+R13 ->
+R14 ->
+R15 ->	PID 14263(5)
+R16 ->
+R17 ->
+R18 ->	PID 14258(5)
+R19 ->
+
+Master Updated Resource Allocation Table at 8:951
+
+Master Updating Resource Availability Table at 8:1006
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	1	10	8	9	5	7	1	8	9	3	1	2	7	5	4	3	4	0	10
+
+Master Updated Resource Availability Table at 8:1036
+
+Master listening for resource request/release at 9:1036
+
+Master has detected Process 14266 requesting 10 R12 at 9:1041
+
+Master running deadlock avoidance algorithm at 9:1046
+
+Master denied 10 R12 to Process 14266 at 9:1046 to avoid deadlock
+
+Master Updating Resource Availability Table at 9:1101
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	1	10	8	9	5	7	1	8	9	3	1	2	7	5	4	3	4	0	10
+
+Master Updated Resource Availability Table at 9:1131
+
+Master listening for resource request/release at 10:1131
+
+Master has detected Process 14259 requesting 12 R19 at 10:1136
+
+Master running deadlock avoidance algorithm at 10:1141
+
+Master denied 12 R19 to Process 14259 at 10:1141 to avoid deadlock
+
+Master Updating Resource Availability Table at 10:1196
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	1	10	8	9	5	7	1	8	9	3	1	2	7	5	4	3	4	0	10
+
+Master Updated Resource Availability Table at 10:1226
+
+Master listening for resource request/release at 11:1226
+
+Master has detected Process 14261 requesting 13 R9 at 11:1231
+
+Master running deadlock avoidance algorithm at 11:1236
+
+Master denied 13 R9 to Process 14261 at 11:1236 to avoid deadlock
+
+Master Updating Resource Availability Table at 11:1291
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	1	10	8	9	5	7	1	8	9	3	1	2	7	5	4	3	4	0	10
+
+Master Updated Resource Availability Table at 11:1321
+
+Master listening for resource request/release at 12:1321
+
+Master has detected Process 14251 requesting 1 R9 at 12:1326
+
+Master running deadlock avoidance algorithm at 12:1331
+
+Master granted 1 R9 to Process 14251 at 12:1331
+
+
+Master Updating Resource Allocation Table at 12:1386
+
+R0 ->
+R1 ->
+R2 ->
+R3 ->
+R4 ->
+R5 ->
+R6 ->
+R7 ->
+R8 ->
+R9 ->	PID 14251(1)
+R10 ->
+R11 ->
+R12 ->	PID 14254(6)
+R13 ->
+R14 ->
+R15 ->	PID 14263(5)
+R16 ->
+R17 ->
+R18 ->	PID 14258(5)
+R19 ->
+
+Master Updated Resource Allocation Table at 12:1416
+
+Master Updating Resource Availability Table at 12:1471
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	1	10	8	9	5	7	1	8	8	3	1	2	7	5	4	3	4	0	10
+
+Master Updated Resource Availability Table at 12:1501
+
+Master listening for resource request/release at 13:1501
+
+Master has detected Process 14252 requesting 11 R7 at 13:1506
+
+Master running deadlock avoidance algorithm at 13:1511
+
+Master denied 11 R7 to Process 14252 at 13:1511 to avoid deadlock
+
+Master Updating Resource Availability Table at 13:1566
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	1	10	8	9	5	7	1	8	8	3	1	2	7	5	4	3	4	0	10
+
+Master Updated Resource Availability Table at 13:1596
+
+Master listening for resource request/release at 14:1596
+
+Master Acknowledged Process 14254 Released 6 R12 at 15:1596
+
+Master Updating Resource Allocation Table at 15:1651
+
+R0 ->
+R1 ->
+R2 ->
+R3 ->
+R4 ->
+R5 ->
+R6 ->
+R7 ->
+R8 ->
+R9 ->	PID 14251(1)
+R10 ->
+R11 ->
+R12 ->
+R13 ->
+R14 ->
+R15 ->	PID 14263(5)
+R16 ->
+R17 ->
+R18 ->	PID 14258(5)
+R19 ->
+
+Master Updated Resource Allocation Table at 15:1681
+
+Master Updating Resource Availability Table at 15:1736
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	1	10	8	9	5	7	1	8	8	3	1	8	7	5	4	3	4	0	10
+
+Master Updated Resource Availability Table at 15:1766
+
+Master listening for resource request/release at 16:1766
+
+Master has detected Process 14257 requesting 10 R19 at 16:1771
+
+Master running deadlock avoidance algorithm at 16:1776
+
+Master granted 10 R19 to Process 14257 at 16:1776
+
+
+Master Updating Resource Allocation Table at 16:1831
+
+R0 ->
+R1 ->
+R2 ->
+R3 ->
+R4 ->
+R5 ->
+R6 ->
+R7 ->
+R8 ->
+R9 ->	PID 14251(1)
+R10 ->
+R11 ->
+R12 ->
+R13 ->
+R14 ->
+R15 ->	PID 14263(5)
+R16 ->
+R17 ->
+R18 ->	PID 14258(5)
+R19 ->	PID 14257(10)
+
+Master Updated Resource Allocation Table at 16:1861
+
+Master Updating Resource Availability Table at 16:1916
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	1	10	8	9	5	7	1	8	8	3	1	8	7	5	4	3	4	0	0
+
+Master Updated Resource Availability Table at 16:1946
+
+Master listening for resource request/release at 17:1946
+
+Master Acknowledged Process 14258 Released 5 R18 at 18:1946
+
+Master Updating Resource Allocation Table at 18:2001
+
+R0 ->
+R1 ->
+R2 ->
+R3 ->
+R4 ->
+R5 ->
+R6 ->
+R7 ->
+R8 ->
+R9 ->	PID 14251(1)
+R10 ->
+R11 ->
+R12 ->
+R13 ->
+R14 ->
+R15 ->	PID 14263(5)
+R16 ->
+R17 ->
+R18 ->
+R19 ->	PID 14257(10)
+
+Master Updated Resource Allocation Table at 18:2031
+
+Master Updating Resource Availability Table at 18:2086
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	1	10	8	9	5	7	1	8	8	3	1	8	7	5	4	3	4	5	0
+
+Master Updated Resource Availability Table at 18:2116
+
+Master listening for resource request/release at 19:2116
+
+Master has detected Process 14253 requesting 11 R17 at 19:2121
+
+Master running deadlock avoidance algorithm at 19:2126
+
+Master denied 11 R17 to Process 14253 at 19:2126 to avoid deadlock
+
+Master Updating Resource Availability Table at 19:2181
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	1	10	8	9	5	7	1	8	8	3	1	8	7	5	4	3	4	5	0
+
+Master Updated Resource Availability Table at 19:2211
+
+Master listening for resource request/release at 20:2211
+
+Master Acknowledged Process 14263 Released 5 R15 at 21:2211
+
+Master Updating Resource Allocation Table at 21:2266
+
+R0 ->
+R1 ->
+R2 ->
+R3 ->
+R4 ->
+R5 ->
+R6 ->
+R7 ->
+R8 ->
+R9 ->	PID 14251(1)
+R10 ->
+R11 ->
+R12 ->
+R13 ->
+R14 ->
+R15 ->
+R16 ->
+R17 ->
+R18 ->
+R19 ->	PID 14257(10)
+
+Master Updated Resource Allocation Table at 21:2296
+
+Master Updating Resource Availability Table at 21:2351
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	1	10	8	9	5	7	1	8	8	3	1	8	7	5	9	3	4	5	0
+
+Master Updated Resource Availability Table at 21:2381
+
+Master listening for resource request/release at 22:2381
+
+Master has detected Process 14249 requesting 12 R4 at 22:2386
+
+Master running deadlock avoidance algorithm at 22:2391
+
+Master denied 12 R4 to Process 14249 at 22:2391 to avoid deadlock
+
+Master Updating Resource Availability Table at 22:2446
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	1	10	8	9	5	7	1	8	8	3	1	8	7	5	9	3	4	5	0
+
+Master Updated Resource Availability Table at 22:2476
+
+Master listening for resource request/release at 23:2476
+
+Master Acknowledged Process 14251 Released 1 R9 at 24:2476
+
+Master Updating Resource Allocation Table at 24:2531
+
+R0 ->
+R1 ->
+R2 ->
+R3 ->
+R4 ->
+R5 ->
+R6 ->
+R7 ->
+R8 ->
+R9 ->
+R10 ->
+R11 ->
+R12 ->
+R13 ->
+R14 ->
+R15 ->
+R16 ->
+R17 ->
+R18 ->
+R19 ->	PID 14257(10)
+
+Master Updated Resource Allocation Table at 24:2561
+
+Master Updating Resource Availability Table at 24:2616
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	1	10	8	9	5	7	1	8	9	3	1	8	7	5	9	3	4	5	0
+
+Master Updated Resource Availability Table at 24:2646
+
+Master listening for resource request/release at 25:2646
+
+Master Acknowledged Process 14257 Released 10 R19 at 26:2646
+
+Master Updating Resource Allocation Table at 26:2701
+
+R0 ->
+R1 ->
+R2 ->
+R3 ->
+R4 ->
+R5 ->
+R6 ->
+R7 ->
+R8 ->
+R9 ->
+R10 ->
+R11 ->
+R12 ->
+R13 ->
+R14 ->
+R15 ->
+R16 ->
+R17 ->
+R18 ->
+R19 ->
+
+Master Updated Resource Allocation Table at 26:2731
+
+Master Updating Resource Availability Table at 26:2786
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	1	10	8	9	5	7	1	8	9	3	1	8	7	5	9	3	4	5	10
+
+Master Updated Resource Availability Table at 26:2816
+
+Master listening for resource request/release at 27:2816
+
+Master has detected Process 14260 requesting 14 R6 at 27:2821
+
+Master running deadlock avoidance algorithm at 27:2826
+
+Master denied 14 R6 to Process 14260 at 27:2826 to avoid deadlock
+
+Master Updating Resource Availability Table at 27:2881
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	1	10	8	9	5	7	1	8	9	3	1	8	7	5	9	3	4	5	10
+
+Master Updated Resource Availability Table at 27:2911
+
+Master listening for resource request/release at 28:2911
+
+Master has detected Process 14267 requesting 2 R9 at 28:2916
+
+Master running deadlock avoidance algorithm at 28:2921
+
+Master granted 2 R9 to Process 14267 at 28:2921
+
+
+Master Updating Resource Allocation Table at 28:2976
+
+R0 ->
+R1 ->
+R2 ->
+R3 ->
+R4 ->
+R5 ->
+R6 ->
+R7 ->
+R8 ->
+R9 ->	PID 14267(2)
+R10 ->
+R11 ->
+R12 ->
+R13 ->
+R14 ->
+R15 ->
+R16 ->
+R17 ->
+R18 ->
+R19 ->
+
+Master Updated Resource Allocation Table at 28:3006
+
+Master Updating Resource Availability Table at 28:3061
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	1	10	8	9	5	7	1	8	7	3	1	8	7	5	9	3	4	5	10
+
+Master Updated Resource Availability Table at 28:3091
+
+Master listening for resource request/release at 29:3091
+
+Master has detected Process 14255 requesting 8 R9 at 29:3096
+
+Master running deadlock avoidance algorithm at 29:3101
+
+Master denied 8 R9 to Process 14255 at 29:3101 to avoid deadlock
+
+Master Updating Resource Availability Table at 29:3156
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	1	10	8	9	5	7	1	8	7	3	1	8	7	5	9	3	4	5	10
+
+Master Updated Resource Availability Table at 29:3186
+
+Master listening for resource request/release at 30:3186
+
+Master has detected Process 14265 requesting 2 R13 at 30:3191
+
+Master running deadlock avoidance algorithm at 30:3196
+
+Master granted 2 R13 to Process 14265 at 30:3196
+
+
+Master Updating Resource Allocation Table at 30:3251
+
+R0 ->
+R1 ->
+R2 ->
+R3 ->
+R4 ->
+R5 ->
+R6 ->
+R7 ->
+R8 ->
+R9 ->	PID 14267(2)
+R10 ->
+R11 ->
+R12 ->
+R13 ->	PID 14265(2)
+R14 ->
+R15 ->
+R16 ->
+R17 ->
+R18 ->
+R19 ->
+
+Master Updated Resource Allocation Table at 30:3281
+
+Master Updating Resource Availability Table at 30:3336
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	1	10	8	9	5	7	1	8	7	3	1	8	5	5	9	3	4	5	10
+
+Master Updated Resource Availability Table at 30:3366
+
+Master listening for resource request/release at 31:3366
+
+Master timed out at 32:3371
+Master cleaning up resources at 32:3376
+
+Master stopping all pending user processes at 27:0
+
+Master stopping Process 14249 at 0:30
+
+Master stopping Process 14251 at 0:45
+
+Master stopping Process 14252 at 0:60
+
+Master stopping Process 14253 at 0:75
+
+Master stopping Process 14254 at 0:90
+
+Master stopping Process 14255 at 0:105
+
+Master stopping Process 14256 at 0:120
+
+Master stopping Process 14257 at 0:135
+
+Master stopping Process 14258 at 0:150
+
+Master stopping Process 14259 at 0:165
+
+Master stopping Process 14260 at 0:180
+
+Master stopping Process 14261 at 0:195
+
+Master stopping Process 14262 at 0:210
+
+Master stopping Process 14263 at 0:225
+
+Master stopping Process 14264 at 0:240
+
+Master stopping Process 14265 at 0:255
+
+Master stopping Process 14266 at 0:270
+
+Master stopping Process 14267 at 0:285
+
+Master Resource Descriptor Table's Shared Memory ID 32774 has been detached and deleted at  33:3391
+
+Master Clock Shared Memory ID 32773 has been detached and deleted at 34:3416
+
+Master removed Messaqe Queue ID 27 at 34:3431
+
+Master terminating at 35:3436
+Master Initializing Resource Descriptor Table at 0:55
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	2	2	8	5	5	9	10	7	8	9	1	7	7	8	7	2	10	10	1
+
+Master completed Resource Descriptor Initialization at 2:85
+
+Master listening for resource request/release at 3:194
+
+Master has detected Process 14481 requesting 16 R19 at 3:199
+
+Master running deadlock avoidance algorithm at 3:204
+
+Master denied 16 R19 to Process 14481 at 3:204 to avoid deadlock
+
+Master Updating Resource Availability Table at 3:259
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	2	2	8	5	5	9	10	7	8	9	1	7	7	8	7	2	10	10	1
+
+Master Updated Resource Availability Table at 3:289
+
+Master listening for resource request/release at 4:289
+
+Master has detected Process 14473 requesting 9 R8 at 4:294
+
+Master running deadlock avoidance algorithm at 4:299
+
+Master denied 9 R8 to Process 14473 at 4:299 to avoid deadlock
+
+Master Updating Resource Availability Table at 4:354
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	2	2	8	5	5	9	10	7	8	9	1	7	7	8	7	2	10	10	1
+
+Master Updated Resource Availability Table at 4:384
+
+Master listening for resource request/release at 5:384
+
+Master has detected Process 14487 requesting 19 R8 at 5:389
+
+Master running deadlock avoidance algorithm at 5:394
+
+Master denied 19 R8 to Process 14487 at 5:394 to avoid deadlock
+
+Master Updating Resource Availability Table at 5:449
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	2	2	8	5	5	9	10	7	8	9	1	7	7	8	7	2	10	10	1
+
+Master Updated Resource Availability Table at 5:479
+
+Master listening for resource request/release at 6:479
+
+Master has detected Process 14483 requesting 16 R3 at 6:484
+
+Master running deadlock avoidance algorithm at 6:489
+
+Master denied 16 R3 to Process 14483 at 6:489 to avoid deadlock
+
+Master Updating Resource Availability Table at 6:544
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	2	2	8	5	5	9	10	7	8	9	1	7	7	8	7	2	10	10	1
+
+Master Updated Resource Availability Table at 6:574
+
+Master listening for resource request/release at 7:574
+
+Master has detected Process 14485 requesting 11 R4 at 7:579
+
+Master running deadlock avoidance algorithm at 7:584
+
+Master denied 11 R4 to Process 14485 at 7:584 to avoid deadlock
+
+Master Updating Resource Availability Table at 7:639
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	2	2	8	5	5	9	10	7	8	9	1	7	7	8	7	2	10	10	1
+
+Master Updated Resource Availability Table at 7:669
+
+Master listening for resource request/release at 8:669
+
+Master has detected Process 14474 requesting 10 R5 at 8:674
+
+Master running deadlock avoidance algorithm at 8:679
+
+Master denied 10 R5 to Process 14474 at 8:679 to avoid deadlock
+
+Master Updating Resource Availability Table at 8:734
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	2	2	8	5	5	9	10	7	8	9	1	7	7	8	7	2	10	10	1
+
+Master Updated Resource Availability Table at 8:764
+
+Master listening for resource request/release at 9:764
+
+Master has detected Process 14472 requesting 16 R11 at 9:769
+
+Master running deadlock avoidance algorithm at 9:774
+
+Master denied 16 R11 to Process 14472 at 9:774 to avoid deadlock
+
+Master Updating Resource Availability Table at 9:829
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	2	2	8	5	5	9	10	7	8	9	1	7	7	8	7	2	10	10	1
+
+Master Updated Resource Availability Table at 9:859
+
+Master listening for resource request/release at 10:859
+
+Master has detected Process 14482 requesting 10 R18 at 10:864
+
+Master running deadlock avoidance algorithm at 10:869
+
+Master granted 10 R18 to Process 14482 at 10:869
+
+
+Master Updating Resource Allocation Table at 10:924
+
+R0 ->
+R1 ->
+R2 ->
+R3 ->
+R4 ->
+R5 ->
+R6 ->
+R7 ->
+R8 ->
+R9 ->
+R10 ->
+R11 ->
+R12 ->
+R13 ->
+R14 ->
+R15 ->
+R16 ->
+R17 ->
+R18 ->	PID 14482(10)
+R19 ->
+
+Master Updated Resource Allocation Table at 10:954
+
+Master Updating Resource Availability Table at 10:1009
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	2	2	8	5	5	9	10	7	8	9	1	7	7	8	7	2	10	0	1
+
+Master Updated Resource Availability Table at 10:1039
+
+Master listening for resource request/release at 11:1039
+
+Master has detected Process 14486 requesting 4 R6 at 11:1044
+
+Master running deadlock avoidance algorithm at 11:1049
+
+Master granted 4 R6 to Process 14486 at 11:1049
+
+
+Master Updating Resource Allocation Table at 11:1104
+
+R0 ->
+R1 ->
+R2 ->
+R3 ->
+R4 ->
+R5 ->
+R6 ->	PID 14486(4)
+R7 ->
+R8 ->
+R9 ->
+R10 ->
+R11 ->
+R12 ->
+R13 ->
+R14 ->
+R15 ->
+R16 ->
+R17 ->
+R18 ->	PID 14482(10)
+R19 ->
+
+Master Updated Resource Allocation Table at 11:1134
+
+Master Updating Resource Availability Table at 11:1189
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	2	2	8	5	5	5	10	7	8	9	1	7	7	8	7	2	10	0	1
+
+Master Updated Resource Availability Table at 11:1219
+
+Master listening for resource request/release at 12:1219
+
+Master has detected Process 14469 requesting 11 R10 at 12:1224
+
+Master running deadlock avoidance algorithm at 12:1229
+
+Master denied 11 R10 to Process 14469 at 12:1229 to avoid deadlock
+
+Master Updating Resource Availability Table at 12:1284
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	2	2	8	5	5	5	10	7	8	9	1	7	7	8	7	2	10	0	1
+
+Master Updated Resource Availability Table at 12:1314
+
+Master listening for resource request/release at 13:1314
+
+Master has detected Process 14476 requesting 15 R15 at 13:1319
+
+Master running deadlock avoidance algorithm at 13:1324
+
+Master denied 15 R15 to Process 14476 at 13:1324 to avoid deadlock
+
+Master Updating Resource Availability Table at 13:1379
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	2	2	8	5	5	5	10	7	8	9	1	7	7	8	7	2	10	0	1
+
+Master Updated Resource Availability Table at 13:1409
+
+Master listening for resource request/release at 14:1409
+
+Master has detected Process 14478 requesting 5 R13 at 14:1414
+
+Master running deadlock avoidance algorithm at 14:1419
+
+Master granted 5 R13 to Process 14478 at 14:1419
+
+
+Master Updating Resource Allocation Table at 14:1474
+
+R0 ->
+R1 ->
+R2 ->
+R3 ->
+R4 ->
+R5 ->
+R6 ->	PID 14486(4)
+R7 ->
+R8 ->
+R9 ->
+R10 ->
+R11 ->
+R12 ->
+R13 ->	PID 14478(5)
+R14 ->
+R15 ->
+R16 ->
+R17 ->
+R18 ->	PID 14482(10)
+R19 ->
+
+Master Updated Resource Allocation Table at 14:1504
+
+Master Updating Resource Availability Table at 14:1559
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	2	2	8	5	5	5	10	7	8	9	1	7	2	8	7	2	10	0	1
+
+Master Updated Resource Availability Table at 14:1589
+
+Master listening for resource request/release at 15:1589
+
+Master has detected Process 14471 requesting 9 R2 at 15:1594
+
+Master running deadlock avoidance algorithm at 15:1599
+
+Master denied 9 R2 to Process 14471 at 15:1599 to avoid deadlock
+
+Master Updating Resource Availability Table at 15:1654
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	2	2	8	5	5	5	10	7	8	9	1	7	2	8	7	2	10	0	1
+
+Master Updated Resource Availability Table at 15:1684
+
+Master listening for resource request/release at 16:1684
+
+Master has detected Process 14477 requesting 15 R6 at 16:1689
+
+Master running deadlock avoidance algorithm at 16:1694
+
+Master denied 15 R6 to Process 14477 at 16:1694 to avoid deadlock
+
+Master Updating Resource Availability Table at 16:1749
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	2	2	8	5	5	5	10	7	8	9	1	7	2	8	7	2	10	0	1
+
+Master Updated Resource Availability Table at 16:1779
+
+Master listening for resource request/release at 17:1779
+
+Master has detected Process 14479 requesting 11 R18 at 17:1784
+
+Master running deadlock avoidance algorithm at 17:1789
+
+Master denied 11 R18 to Process 14479 at 17:1789 to avoid deadlock
+
+Master Updating Resource Availability Table at 17:1844
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	2	2	8	5	5	5	10	7	8	9	1	7	2	8	7	2	10	0	1
+
+Master Updated Resource Availability Table at 17:1874
+
+Master listening for resource request/release at 18:1874
+
+Master Acknowledged Process 14478 Released 5 R13 at 19:1874
+
+Master Updating Resource Allocation Table at 19:1929
+
+R0 ->
+R1 ->
+R2 ->
+R3 ->
+R4 ->
+R5 ->
+R6 ->	PID 14486(4)
+R7 ->
+R8 ->
+R9 ->
+R10 ->
+R11 ->
+R12 ->
+R13 ->
+R14 ->
+R15 ->
+R16 ->
+R17 ->
+R18 ->	PID 14482(10)
+R19 ->
+
+Master Updated Resource Allocation Table at 19:1959
+
+Master Updating Resource Availability Table at 19:2014
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	2	2	8	5	5	5	10	7	8	9	1	7	7	8	7	2	10	0	1
+
+Master Updated Resource Availability Table at 19:2044
+
+Master listening for resource request/release at 20:2044
+
+Master has detected Process 14484 requesting 5 R11 at 20:2049
+
+Master running deadlock avoidance algorithm at 20:2054
+
+Master denied 5 R11 to Process 14484 at 20:2054 to avoid deadlock
+
+Master Updating Resource Availability Table at 20:2109
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	2	2	8	5	5	5	10	7	8	9	1	7	7	8	7	2	10	0	1
+
+Master Updated Resource Availability Table at 20:2139
+
+Master listening for resource request/release at 21:2139
+
+Master has detected Process 14480 requesting 6 R15 at 21:2144
+
+Master running deadlock avoidance algorithm at 21:2149
+
+Master granted 6 R15 to Process 14480 at 21:2149
+
+
+Master Updating Resource Allocation Table at 21:2204
+
+R0 ->
+R1 ->
+R2 ->
+R3 ->
+R4 ->
+R5 ->
+R6 ->	PID 14486(4)
+R7 ->
+R8 ->
+R9 ->
+R10 ->
+R11 ->
+R12 ->
+R13 ->
+R14 ->
+R15 ->	PID 14480(6)
+R16 ->
+R17 ->
+R18 ->	PID 14482(10)
+R19 ->
+
+Master Updated Resource Allocation Table at 21:2234
+
+Master Updating Resource Availability Table at 21:2289
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	2	2	8	5	5	5	10	7	8	9	1	7	7	8	1	2	10	0	1
+
+Master Updated Resource Availability Table at 21:2319
+
+Master listening for resource request/release at 22:2319
+
+Master has detected Process 14475 requesting 2 R19 at 22:2324
+
+Master running deadlock avoidance algorithm at 22:2329
+
+Master denied 2 R19 to Process 14475 at 22:2329 to avoid deadlock
+
+Master Updating Resource Availability Table at 22:2384
+
+R0	R1	R2	R3	R4	R5	R6	R7	R8	R9	R10	R11	R12	R13	R14	R15	R16	R17	R18	R19
+
+10	2	2	8	5	5	5	10	7	8	9	1	7	7	8	1	2	10	0	1
+
+Master Updated Resource Availability Table at 22:2414
+
+Master listening for resource request/release at 23:2414
+
+Master timed out at 24:2419
+Master cleaning up resources at 24:2424
+
+Master stopping all pending user processes at 28:24
+
+Master stopping Process 14469 at 24:2427
+
+Master stopping Process 14471 at 24:2428
+
+Master stopping Process 14472 at 24:2429
+
+Master stopping Process 14473 at 24:2430
+
+Master stopping Process 14474 at 24:2431
+
+Master stopping Process 14475 at 24:2432
+
+Master stopping Process 14476 at 24:2433
+
+Master stopping Process 14477 at 24:2434
+
+Master stopping Process 14478 at 24:2435
+
+Master stopping Process 14479 at 24:2436
+
+Master stopping Process 14480 at 24:2437
+
+Master stopping Process 14481 at 24:2438
+
+Master stopping Process 14482 at 24:2439
+
+Master stopping Process 14483 at 24:2440
+
+Master stopping Process 14484 at 24:2441
+
+Master stopping Process 14485 at 24:2442
+
+Master stopping Process 14486 at 24:2443
+
+Master stopping Process 14487 at 24:2444
+
+Master Resource Descriptor Table's Shared Memory ID 32796 has been detached and deleted at  25:2459
+
+Master Clock Shared Memory ID 32794 has been detached and deleted at 26:2484
+
+Master removed Messaqe Queue ID 28 at 26:2499
+
+Master terminating at 27:2504

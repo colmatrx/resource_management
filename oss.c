@@ -105,8 +105,6 @@ int main(int argc, char *argv[]){   //start of main() function
 
     resourceMessageQueueID = msgget(message_queue_key, IPC_CREAT|0766); //creates the message queue and gets the queue id
 
-    printf("\nMessage Queue ID is %d\n", resourceMessageQueueID);
-
     if (resourceMessageQueueID == -1){  //error checking the message queue creation
 
         perror("\nError: Master in Parent Process. Message queue creation failed\n");
@@ -406,6 +404,8 @@ void initResourceTable(void){
 
     logmsg(logfilename, logstring); //calling logmsg() to write to file
 
+    printf("%s", logstring);
+
     //loop through the resource table in shared memory using structure address pointer to initialize the resource arrtibutes
 
     for (int i = 0; i < 20; i++){
@@ -549,6 +549,8 @@ void printResourceAllocationTable(void){    //function to print the resource all
 
     logmsg(logfilename, logstring); //calling logmsg() to write to file
 
+    strcpy(logstring, "");
+
     printf("%s", logstring);
 
     char indexToString[6]; char allocationToString[4];  //for conversions to strings
@@ -576,7 +578,7 @@ void printResourceAllocationTable(void){    //function to print the resource all
         strcat(logstring, "\n");
     }
 
-    logmsg(logfilename, logstring);
+    logmsg(logfilename, logstring); //calling logmsg() to write to file
 
     printf("%s", logstring);
 
@@ -600,7 +602,7 @@ void cleanUp(void){ //frees up used resources including shared memory
 
     // first kill all user processes that are still holding resources
 
-    snprintf(logstring, sizeof(logstring), "\nMaster stopping all pending user processes at %hu:%hu\n", resourceMessageQueueID, ossofflinesecondclock, ossofflinenanosecondclock+=15);
+    snprintf(logstring, sizeof(logstring), "\nMaster stopping all pending user processes at %hu:%hu\n", resourceMessageQueueID, *osstimeseconds, *osstimenanoseconds+=2);
     logmsg(logfilename, logstring);
 
         for (int index = 0; index < max_number_of_processes; index++){
@@ -611,7 +613,7 @@ void cleanUp(void){ //frees up used resources including shared memory
 
                     printf("\nStopping user process %d\n", processID[index]);
 
-                    snprintf(logstring, sizeof(logstring), "\nMaster stopping Process %s at %hu:%hu\n", pidToString, ossofflinesecondclock, ossofflinenanosecondclock+=15);
+                    snprintf(logstring, sizeof(logstring), "\nMaster stopping Process %s at %hu:%hu\n", pidToString, *osstimeseconds, *osstimenanoseconds+=1);
                     logmsg(logfilename, logstring);
 
                     kill(processID[index], SIGKILL);
